@@ -43,6 +43,8 @@ CAD 层将布局落实为可编辑图元，保存源身份及允许变换，转�
 
 主链设[三道审核关口](../skills/chemical-pfd-pid-cad/references/INDEPENDENT_REVIEW.md)：第一关在 ImageGen 前核来源、内容及工程语义；第二关复用生成后的实际看图与反馈；第三关在交付前核最终文件及说明。每关按自身证据判断，前关通过不替代后关检查；失败回到对应环节，修订后重验受影响的下游。独立审阅按任务复杂度安排，不固定每关三人。软件发布审核与具体图纸的工程验收单独记录。
 
+Aspen或其他上游任务可按[Image布局前段](../skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md)调用 `image_layout_only`。同版来源、模拟对象与实物映射、准确标签和跨块接口由调用方提供；本Skill完成第一关、实际Image生成及第二关后交回已审图块、布局/接口映射和反馈，在固定CAD端口前停止。后续Aspen位置实施、报告使用或最终文件验收由原主任务接手；本仓库不因此宣称提供通用Aspen原生排版实现。
+
 ## 总控与四个专项
 
 | 入口 | 负责内容 | 边界 |

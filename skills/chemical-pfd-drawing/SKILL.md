@@ -5,7 +5,7 @@ description: 按项目依据绘制、规划或修复PFD，表达设备、物料�
 
 # PFD专项
 
-先读[总控](../chemical-pfd-pid-cad/SKILL.md)及其压力规则。实际取得drawing=pfd的检索包，加载common与最终对象涉及的设备模块；新增对象补查，不能只核最初设备列表。
+先读[总控](../chemical-pfd-pid-cad/SKILL.md)及其压力规则。Aspen仅委托排版时，按[Image布局前段](../chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md)在第二关通过后返回，以下CAD验收不扩展该调用范围。实际取得drawing=pfd的检索包，加载common与最终对象涉及的设备模块；新增对象补查，不能只核最初设备列表。
 
 读取[信息与控制](../chemical-pfd-pid-cad/references/DRAWING_AND_CONTROL.md)：设备、物料与能量流向、特征操作条件、同号流股表按项目范围表达。T/P/F、组成/相态及基准须来自同案同工况，详细管道/阀件/信号归PID。R原文、D推导、S授权训练、缺项分列；没有数据不能伪造工程值。
 
