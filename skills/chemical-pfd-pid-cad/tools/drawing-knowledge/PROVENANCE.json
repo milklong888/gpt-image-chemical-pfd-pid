@@ -1,0 +1,140 @@
+{
+  "files": [
+    {
+      "upstream_component": "installed drawing-knowledge/additional_content.py",
+      "source_sha256": "fa07d9fc9d2020eb350f7dacb29a7f54293b01a1d5af9a4b953c6521f7650515",
+      "candidate_path": "engine\\additional_content.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/check_plan_scope.py",
+      "source_sha256": "f88f7a4d4f486b1941ac753fccaa364b26be2e683925670a45d07af08ee562ed",
+      "candidate_path": "engine\\check_plan_scope.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/disk_index_cache.py",
+      "source_sha256": "be466a83617e520f57b0ec2fbde4ef2ee98325d1c9865c7f7d3d0e97e9183486",
+      "candidate_path": "engine\\disk_index_cache.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/drafting_topics.py",
+      "source_sha256": "421525cfab886aae4dee10aa5add7f4ac7667bb906db74335c23bd67c5a1b323",
+      "candidate_path": "engine\\drafting_topics.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/knowledge.py",
+      "source_sha256": "a76b7d2a7103df5599f96d61cd3f9d2d2245c9226f23c7b85f30cfa5a88bef70",
+      "candidate_path": "engine\\knowledge.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/literal_candidates.py",
+      "source_sha256": "6824bba2cb1fa66d4caff70283530f95f1e945530d9b09f06c6503e64d568df5",
+      "candidate_path": "engine\\literal_candidates.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/retrieval_gate.py",
+      "source_sha256": "0a15a9dc9cf0fe1d8b19b2f87b6e3ff8624d902f4ad5bc20820c4940285e5abc",
+      "candidate_path": "engine\\retrieval_gate.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/source_context.py",
+      "source_sha256": "746789dadd9f04fe88e91175534c588be6ae1854eb7d6bc7669b343017d52236",
+      "candidate_path": "engine\\source_context.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "installed drawing-knowledge/source_repair.py",
+      "source_sha256": "63b6af2017ae0c1f34c16219dc12207b0639bd293a63a76bbb2c79b564cfa91e",
+      "candidate_path": "engine\\source_repair.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "source-registry/classify_sources.py",
+      "source_sha256": "733a3e93716f93112a419b822f3a56ccb3ed819465424d8093cfaddc5ee412c1",
+      "candidate_path": "engine\\registry\\classify_sources.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "source-registry/ingest_archives.py",
+      "source_sha256": "420dae7d997463be04b16790b3cec891e845adc2e548283299cc66cf46b719eb",
+      "candidate_path": "engine\\registry\\ingest_archives.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "parser/docling_adapter.py",
+      "source_sha256": "e2a8e87474c38c19ca93faeeb97826022cacbb1bcd0d720f13f4aff632af026b",
+      "candidate_path": "engine\\parser\\docling_adapter.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "parser/native_pdf_batch.py",
+      "source_sha256": "ee2eb1c8dd52c2ea84ec53b99f06915e42394e24f7537620f138147501280961",
+      "candidate_path": "engine\\parser\\native_pdf_batch.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "parser/collect_coverage.py",
+      "source_sha256": "f95e69a5208fad69844270694d3905fe8de7312d91fbd154c0d2a42b4f8d11f2",
+      "candidate_path": "engine\\parser\\collect_coverage.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "parser/analyze_assembly_duplicates.py",
+      "source_sha256": "e8347f553ff8c87595ae6038159a63e5a24a43cfb529bf34746644617b1fcb59",
+      "candidate_path": "engine\\parser\\analyze_assembly_duplicates.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "module materializer",
+      "source_sha256": "896bca74587d0d1739749538b8c4e0fc831780e7be9cd344d75c0031f08cb969",
+      "candidate_path": "engine\\build_modules.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "LinkML project schema/drawing_knowledge.linkml.yaml",
+      "source_sha256": "061d340e490578f8c82b63e9cd0e0b3be2f1b638bab6f9dec82cb583ff44b1b8",
+      "candidate_path": "schema\\drawing_knowledge.linkml.yaml",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    },
+    {
+      "upstream_component": "LinkML project schema/drawing_knowledge.schema.json",
+      "source_sha256": "3e14f20f2e208f67c53bc052eecb07eca2d9d4772bf797cf06e2a300079039b7",
+      "candidate_path": "schema\\drawing_knowledge.schema.json",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses."
+    }
+  ],
+  "adaptations": [
+    "Portable explicit config, no home-directory discovery",
+    "Relative model location config and env override",
+    "Source-specific private rotation exception removed; user ingestion must retain reviewed exclusions",
+    "Drafting topic source_leads cleared: no absent local standard references",
+    "Native conversion source not included; parser-only read adapters retained",
+    "Classifier producer uses canonical classification_candidates/module_candidates consumed by assemble; actual ZIP->ingest->classify->assemble->LinkML validation regression added."
+  ],
+  "not_included": [
+    "private original attachments",
+    "source registries and aliases",
+    "standards text",
+    "corpus/indexes/embeddings",
+    "model weights",
+    "commercial CAD or Office binaries",
+    "unvalidated native conversion candidate",
+    "Corpus-specific OCR pilot/benchmark scripts containing source IDs or standard quote anchors"
+  ],
+  "excluded_files": [
+    {
+      "upstream_component": "parser/summarize_benchmark.py",
+      "source_sha256": "e0523a9b8ec749d5ec7a0a56fe5413a64f35d1aa139477962e9424739463cb2f",
+      "candidate_path": "engine\\parser\\summarize_benchmark.py",
+      "ownership": "Existing project first-party adapter/source; redistribution license selected by repository owner, not inferred from installed third-party licenses.",
+      "status": "excluded_not_distributed",
+      "reason": "Corpus-specific OCR benchmark quote anchors are not public source material."
+    }
+  ]
+}

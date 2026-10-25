@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "Original synthetic source SHA tamper rejected",
+    "Actual receipt gate accepts synthetic bound packet; retrieval mocked, no index/model",
+    "Packet result ID tamper rejected",
+    "Even synthetic re-digested/execution-recorded result content differs from corpus and is rejected",
+    "Missing/changed literal helper hash rejected",
+    "Synthetic full identifier exact boundary/source filtering verified",
+    "ZIP traversal refused by original ingest path checker"
+  ],
+  "actual_semantic_queries": 0,
+  "actual_embedding_builds": 0,
+  "actual_CAD_runs": 0,
+  "docling_OCR_run": false,
+  "scope": "Original synthetic data, real assembly/LinkML schema/gate/literal source checks; retrieval result generation mocked and explicitly synthetic. No production files read by tests."
+}

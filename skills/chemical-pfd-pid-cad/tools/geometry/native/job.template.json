@@ -1,0 +1,7 @@
+{
+  "input_dwg": "REQUIRED_ABSOLUTE_PATH_TO_CALLER_OWNED_DWG",
+  "input_sha256": "REQUIRED_FULL_SHA256",
+  "output_root": "REQUIRED_NEW_ABSOLUTE_OUTPUT_DIRECTORY",
+  "expected_native_arrow_handles": [],
+  "expected_font_sha256_by_basename": {}
+}

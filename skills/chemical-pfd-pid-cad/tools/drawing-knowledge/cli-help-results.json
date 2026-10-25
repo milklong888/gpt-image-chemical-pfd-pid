@@ -1,0 +1,56 @@
+[
+  {
+    "path": "engine/knowledge.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/source_context.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/source_repair.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/check_plan_scope.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/registry/ingest_archives.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/registry/classify_sources.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/parser/docling_adapter.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/parser/native_pdf_batch.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  },
+  {
+    "path": "engine/parser/collect_coverage.py",
+    "returncode": 0,
+    "help_returned": true,
+    "stderr": ""
+  }
+]

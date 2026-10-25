@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+data/
+engine/runtime.json
+*.dwg
+*.dxf
+*.pdf
+*.zip
+*.rar

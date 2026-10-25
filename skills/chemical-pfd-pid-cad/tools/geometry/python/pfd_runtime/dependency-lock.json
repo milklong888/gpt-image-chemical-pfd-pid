@@ -1,0 +1,8 @@
+{
+  "package": "libavoid-js",
+  "version": "0.5.0-beta.5",
+  "tarball": "https://registry.npmjs.org/libavoid-js/-/libavoid-js-0.5.0-beta.5.tgz",
+  "integrity": "sha512-jHkn6A10815TgFhZ1paUD/NDnQkg4C66qJc2Juj1NpmO/+QXnJ4UjIdKQarkXLmI/QgXhEO3RWDxMi3i+uHPwA==",
+  "github": "https://github.com/Aksem/libavoid-js",
+  "sha256": "9582e89a42d8d3e1f4e73f2f13e781c058dca7d4ba8a073250ef8005f5c4586f"
+}

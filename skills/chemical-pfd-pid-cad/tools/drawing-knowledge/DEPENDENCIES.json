@@ -1,0 +1,269 @@
+{
+  "metadata_source": "Local installed distribution metadata; declarations are not a comprehensive license audit. No third-party package source, binaries, model weights or standards text bundled.",
+  "dependencies": [
+    {
+      "distribution": "llama-index-core",
+      "version": "0.14.25",
+      "license_declared": "MIT",
+      "license_classifiers": [],
+      "project_urls": [
+        "Homepage, https://llamaindex.ai",
+        "Repository, https://github.com/run-llama/llama_index",
+        "Documentation, https://docs.llamaindex.ai/en/stable/"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "llama-index-embeddings-huggingface",
+      "version": "0.8.0",
+      "license_declared": "MIT",
+      "license_classifiers": [],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "llama-index-retrievers-bm25",
+      "version": "0.8.0",
+      "license_declared": "MIT",
+      "license_classifiers": [],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "llama-index-storage-kvstore-redis",
+      "installed": false,
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "docling",
+      "version": "2.142.1",
+      "license_declared": "MIT",
+      "license_classifiers": [],
+      "project_urls": [
+        "homepage, https://github.com/docling-project/docling",
+        "repository, https://github.com/docling-project/docling",
+        "issues, https://github.com/docling-project/docling/issues",
+        "changelog, https://github.com/docling-project/docling/blob/main/CHANGELOG.md"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "docling-core",
+      "version": "2.104.0",
+      "license_declared": "MIT",
+      "license_classifiers": [],
+      "project_urls": [
+        "homepage, https://github.com/docling-project",
+        "repository, https://github.com/docling-project/docling-core",
+        "issues, https://github.com/docling-project/docling-core/issues",
+        "changelog, https://github.com/docling-project/docling-core/blob/main/CHANGELOG.md"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "linkml",
+      "version": "1.12.1",
+      "license_declared": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "linkml-runtime",
+      "version": "1.12.1",
+      "license_declared": "CC0-1.0",
+      "license_classifiers": [],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "jsonschema",
+      "version": "4.26.0",
+      "license_declared": "MIT",
+      "license_classifiers": [],
+      "project_urls": [
+        "Homepage, https://github.com/python-jsonschema/jsonschema",
+        "Documentation, https://python-jsonschema.readthedocs.io/",
+        "Issues, https://github.com/python-jsonschema/jsonschema/issues/",
+        "Funding, https://github.com/sponsors/Julian",
+        "Tidelift, https://tidelift.com/subscription/pkg/pypi-jsonschema?utm_source=pypi-jsonschema&utm_medium=referral&utm_campaign=pypi-link",
+        "Changelog, https://github.com/python-jsonschema/jsonschema/blob/main/CHANGELOG.rst",
+        "Source, https://github.com/python-jsonschema/jsonschema"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "jieba",
+      "version": "0.42.1",
+      "license_declared": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "diskcache",
+      "version": "5.6.3",
+      "license_declared": "Apache 2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "project_urls": [
+        "Documentation, http://www.grantjenks.com/docs/diskcache/",
+        "Funding, https://gum.co/diskcache",
+        "Source, https://github.com/grantjenks/python-diskcache",
+        "Tracker, https://github.com/grantjenks/python-diskcache/issues"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "ijson",
+      "version": "3.6.0",
+      "license_declared": "BSD-3-Clause AND ISC",
+      "license_classifiers": [],
+      "project_urls": [
+        "Homepage, https://github.com/ICRAR/ijson"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "filelock",
+      "version": "4.2.4",
+      "license_declared": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": [
+        "Documentation, https://py-filelock.readthedocs.io",
+        "Homepage, https://github.com/tox-dev/py-filelock",
+        "Source, https://github.com/tox-dev/py-filelock",
+        "Tracker, https://github.com/tox-dev/py-filelock/issues"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "torch",
+      "version": "2.14.1",
+      "license_declared": "Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT",
+      "license_classifiers": [],
+      "project_urls": [
+        "Homepage, https://pytorch.org",
+        "Repository, https://github.com/pytorch/pytorch",
+        "Documentation, https://pytorch.org/docs",
+        "Issue Tracker, https://github.com/pytorch/pytorch/issues",
+        "Forum, https://discuss.pytorch.org"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "sentence-transformers",
+      "version": "6.2.0",
+      "license_declared": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": [
+        "Homepage, https://www.SBERT.net",
+        "Repository, https://github.com/huggingface/sentence-transformers/"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "transformers",
+      "version": "5.20.2",
+      "license_declared": "Apache 2.0 License",
+      "license_classifiers": [],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "PyMuPDF",
+      "version": "2.0",
+      "license_declared": "Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License",
+      "license_classifiers": [],
+      "project_urls": [
+        "Documentation, https://pymupdf.readthedocs.io/",
+        "Source, https://github.com/pymupdf/pymupdf",
+        "Tracker, https://github.com/pymupdf/PyMuPDF/issues",
+        "Changelog, https://pymupdf.readthedocs.io/en/latest/changes.html"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "pypdfium2",
+      "version": "5.14.0",
+      "license_declared": "BSD-3-Clause, Apache-2.0, dependency licenses",
+      "license_classifiers": [],
+      "project_urls": [
+        "Source, https://github.com/pypdfium2-team/pypdfium2",
+        "Tracker, https://github.com/pypdfium2-team/pypdfium2/issues",
+        "Documentation, https://pypdfium2.readthedocs.io",
+        "Changelog, https://pypdfium2.readthedocs.io/en/stable/changelog.html"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "Pillow",
+      "version": "13.0.0",
+      "license_declared": "MIT-CMU",
+      "license_classifiers": [],
+      "project_urls": [
+        "Release notes, https://pillow.readthedocs.io/en/stable/releasenotes/index.html",
+        "Changelog, https://github.com/python-pillow/Pillow/releases",
+        "Documentation, https://pillow.readthedocs.io",
+        "Funding, https://tidelift.com/lifter/search/pypi/pillow",
+        "Homepage, https://python-pillow.org",
+        "Mastodon, https://fosstodon.org/@pillow",
+        "Security, https://pillow.readthedocs.io/en/stable/handbook/security.html",
+        "Source, https://github.com/python-pillow/Pillow"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "PyYAML",
+      "version": "6.0.3",
+      "license_declared": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": [
+        "Bug Tracker, https://github.com/yaml/pyyaml/issues",
+        "CI, https://github.com/yaml/pyyaml/actions",
+        "Documentation, https://pyyaml.org/wiki/PyYAMLDocumentation",
+        "Mailing lists, http://lists.sourceforge.net/lists/listinfo/yaml-core",
+        "Source Code, https://github.com/yaml/pyyaml"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "psutil",
+      "version": "7.2.2",
+      "license_declared": "BSD-3-Clause",
+      "license_classifiers": [],
+      "project_urls": [],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "rapidocr",
+      "version": "3.10.0",
+      "license_declared": "Apache-2.0",
+      "license_classifiers": [],
+      "project_urls": [
+        "Documentation, https://rapidai.github.io/RapidOCRDocs",
+        "Changelog, https://github.com/RapidAI/RapidOCR/releases"
+      ],
+      "copied_into_candidate": false
+    },
+    {
+      "distribution": "onnxruntime",
+      "version": "1.31.0",
+      "license_declared": "MIT License",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "project_urls": [],
+      "copied_into_candidate": false
+    }
+  ],
+  "BGE": "User-provided BAAI/bge-small-zh-v1.5 weights; existing model manifest identifies MIT, verify chosen model upstream terms separately.",
+  "important_limit": "PyMuPDF metadata declares AGPL-3.0-or-later; optional PDF features require license review or a compatible separately supplied backend. No commercial Autodesk/Office implementation copied."
+}

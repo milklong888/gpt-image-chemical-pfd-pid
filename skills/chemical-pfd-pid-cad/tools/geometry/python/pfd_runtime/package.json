@@ -1,0 +1,8 @@
+{
+  "name": "pfd-optional-router-runtime",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "libavoid-js": "0.5.0-beta.5"
+  }
+}

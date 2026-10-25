@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": [
+    "Actual classifier canonical producer fields and candidate approval semantics preserved",
+    "Three ZIP members deduplicate to two immutable content sources, aliases retained",
+    "Unknown input remains unknown/no equipment module; no engineering category forced",
+    "Original ZIP and all retained source bytes unchanged through whole chain"
+  ],
+  "steps": [
+    {
+      "step": "ingest actual ZIP",
+      "script": "engine/registry/ingest_archives.py",
+      "returncode": 0,
+      "stdout": "{\"ok\": true, \"zip_count\": 1, \"member_count\": 3, \"unique_source_count\": 2, \"added_source_count\": 2, \"out\": \"<synthetic-registry>\"}",
+      "stderr": ""
+    },
+    {
+      "step": "classify actual registry",
+      "script": "engine/registry/classify_sources.py",
+      "returncode": 0,
+      "stdout": "{\"ok\": true, \"sources\": 2, \"scanned_pages\": 0, \"low_text_pages\": 0, \"thumbnails\": 0}",
+      "stderr": "<test-python-environment>\\Lib\\site-packages\\fitz\\__init__.py:17: FutureWarning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\n  warnings.warn("
+    },
+    {
+      "step": "assemble actual produced classification",
+      "script": "engine/knowledge.py",
+      "returncode": 0,
+      "stdout": "{'nodes': 21, 'relations': 13, 'kinds': {'Module': 8, 'DrawingKind': 5, 'Source': 2, 'Check': 6}, 'source_count': 2, 'source_digest': '17c09504fff516020801f4b9279dbc1d8d45893d1d4adb1ae23d0f653e44b015', 'corpus_sha256': '940b16faab4424a1043bb9fc79bd555570318d692d53fb8fac0ca9d4af08213f'}",
+      "stderr": ""
+    },
+    {
+      "step": "validate actual assembly LinkML",
+      "script": "engine/knowledge.py",
+      "returncode": 0,
+      "stdout": "{'schema_valid': True}",
+      "stderr": ""
+    }
+  ],
+  "mocked_steps": 0,
+  "synthetic_ZIP_members": 3,
+  "unique_content_sources": 2,
+  "PDFs": 0,
+  "OCR_runs": 0,
+  "model_runs": 0,
+  "CAD_runs": 0,
+  "code_SHA256": {
+    "ingest_archives.py": "420dae7d997463be04b16790b3cec891e845adc2e548283299cc66cf46b719eb",
+    "classify_sources.py": "6cce1e5f276d657e68f563c26e049e7a7f4f0e102234a42ceb4fd3341edaf04e",
+    "knowledge.py": "f934ef5ba72231fd41257029e2e0402f5e953742e559a451b5b19afddca89254"
+  }
+}

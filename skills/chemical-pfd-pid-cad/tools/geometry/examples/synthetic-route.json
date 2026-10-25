@@ -1,0 +1,134 @@
+{
+  "scene": {
+    "schema": "pfd-guard/v1",
+    "parameters": {
+      "linear_tolerance": 1e-06,
+      "angular_tolerance_deg": 0.01,
+      "equipment_clearance": 1,
+      "pipe_clearance": 1,
+      "minimum_lead": 2
+    },
+    "equipment": [
+      {
+        "id": "DEMO_A",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "ports": [
+          {
+            "id": "out",
+            "point": [
+              10,
+              5
+            ],
+            "outward": [
+              1,
+              0
+            ],
+            "lead": 2
+          }
+        ]
+      },
+      {
+        "id": "DEMO_B",
+        "polygon": [
+          [
+            40,
+            0
+          ],
+          [
+            50,
+            0
+          ],
+          [
+            50,
+            10
+          ],
+          [
+            40,
+            10
+          ],
+          [
+            40,
+            0
+          ]
+        ],
+        "ports": [
+          {
+            "id": "in",
+            "point": [
+              40,
+              5
+            ],
+            "outward": [
+              -1,
+              0
+            ],
+            "lead": 2
+          }
+        ]
+      },
+      {
+        "id": "OBSTACLE",
+        "polygon": [
+          [
+            20,
+            1
+          ],
+          [
+            30,
+            1
+          ],
+          [
+            30,
+            9
+          ],
+          [
+            20,
+            9
+          ],
+          [
+            20,
+            1
+          ]
+        ],
+        "ports": []
+      }
+    ],
+    "pipes": []
+  },
+  "connections": [
+    {
+      "id": "DEMO_FLOW",
+      "source": {
+        "equipment": "DEMO_A",
+        "port": "out"
+      },
+      "target": {
+        "equipment": "DEMO_B",
+        "port": "in"
+      }
+    }
+  ],
+  "synthetic": true,
+  "engineering_meaning": null
+}

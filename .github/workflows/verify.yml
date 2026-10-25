@@ -1,0 +1,31 @@
+name: Verify public package
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python scripts/check_release.py
+      - run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --ignore-scripts
+        working-directory: skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_runtime
+      - run: python skills/chemical-pfd-pid-cad/tools/geometry/audit/run_offline_validation.py --runtime skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_runtime --out /tmp/geometry-validation
+  knowledge-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install llama-index-core linkml linkml-runtime jsonschema PyYAML ezdxf
+      - run: python -X utf8 skills/chemical-pfd-pid-cad/tools/drawing-knowledge/tests/test_portable.py
+      - run: python -X utf8 skills/chemical-pfd-pid-cad/tools/drawing-knowledge/tests/test_zip_roundtrip.py

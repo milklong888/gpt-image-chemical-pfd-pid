@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-25",
+  "scope": "Public-package tests executed locally; independent from historical drawing delivery.",
+  "geometry": {
+    "passed": true,
+    "tests_discovered": 58,
+    "skipped": 0,
+    "python": "3.14.7",
+    "dependencies": {
+      "shapely": "2.1.2",
+      "ezdxf": "1.4.3"
+    },
+    "real_optional_libavoid_invoked": true,
+    "cad_executed": false,
+    "fresh_dependency_install_tested": false
+  },
+  "knowledge_zip_roundtrip": {
+    "passed": true,
+    "actual_cli_stages": [
+      "ZIP ingest",
+      "source classify",
+      "knowledge assemble",
+      "LinkML validate"
+    ],
+    "mocked": false
+  },
+  "native_output_filesystem": {
+    "passed": true,
+    "cases": 13,
+    "autodesk_references": 0,
+    "cad_executed": false
+  },
+  "optional_native_source": {
+    "compiled": true,
+    "AutoCAD_version_target": "2026",
+    "executed_in_AutoCAD": false
+  },
+  "fresh_environment_install_verified": false,
+  "remote_CI_verified": false,
+  "private_corpus_distributed": false,
+  "engineering_release": false
+}

@@ -1,0 +1,399 @@
+{
+  "schema": "drafting-topics/v1",
+  "topics": [
+    {
+      "id": "standard_baseline",
+      "aliases": [
+        "标准基线",
+        "标准版本",
+        "standard baseline"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "default_for": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核对本图项目采用标准的完整身份、版本、当前状态、适用条件、原页和父条款/例外；目录状态与原文已读及项目采用分别记录。",
+      "lookup_before": [
+        "策划和ImageGen之前",
+        "改版或更换标准体系之前"
+      ],
+      "check_after": [
+        "冻结规则之后",
+        "实际文件交付之前"
+      ],
+      "source_leads": [],
+      "review_boundary": "只定位标准和状态。目录现行不等于原文已读、项目适用或采用；未读正文不得形成规范结论。"
+    },
+    {
+      "id": "symbol_identity",
+      "aliases": [
+        "图例身份",
+        "符号身份",
+        "symbol identity"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "default_for": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核对完整原图例的来源hash、图种、原页/CAD句柄、组成、当前用途与变换边界；真实端口和语义是否同案核实？",
+      "lookup_before": [
+        "选择源图例和ImageGen之前",
+        "更换块或图种之前"
+      ],
+      "check_after": [
+        "实际CAD源身份/变换回读之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "源图例存在、几何保真和名称相同不证明项目采用；不生成或补齐设备设计。"
+    },
+    {
+      "id": "physical_connection",
+      "aliases": [
+        "真实端点",
+        "管口连接",
+        "接管短线",
+        "旋转",
+        "镜像",
+        "physical connection"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid"
+      ],
+      "default_for": [
+        "pfd",
+        "pid"
+      ],
+      "modules": [
+        "piping"
+      ],
+      "query_prompt": "核对已确定物料线的源管口、真实落点、变换后向外法向和短接管；适用画法原条款和例外是什么？",
+      "lookup_before": [
+        "接线/旋转/镜像及接口冻结之前"
+      ],
+      "check_after": [
+        "全线及首末段几何检查之后",
+        "实际DXF和原生重开回读之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "只审已确定连接的表达。不得由设备外框猜管口服务；检查器不支持的拓扑保留未决。"
+    },
+    {
+      "id": "junction_crossing",
+      "aliases": [
+        "交叉",
+        "分支",
+        "共线",
+        "junction",
+        "crossing",
+        "拱桥",
+        "拱形跨越",
+        "跨线桥",
+        "断线"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid"
+      ],
+      "default_for": [
+        "pfd",
+        "pid"
+      ],
+      "modules": [
+        "piping"
+      ],
+      "query_prompt": "核对当前体系的相连/不相连、分支和交叉表示及适用条件；实际几何与声明的拓扑是否一致？ 当前用户约定必要交叉采用连续拱形跨越，核桥端接实、局部不连接合同与实际弧线；标准差异如实单列。",
+      "lookup_before": [
+        "选择交叉/分支画法和排线之前"
+      ],
+      "check_after": [
+        "实际几何和跨层关系检查之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "不能混合标准体系，不能靠删线掩盖误接；不把通用几何通过当作条款合规。"
+    },
+    {
+      "id": "continuation",
+      "aliases": [
+        "跨图",
+        "跨页",
+        "接续",
+        "continuation",
+        "off-page"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid"
+      ],
+      "default_for": [
+        "pfd",
+        "pid"
+      ],
+      "modules": [
+        "piping"
+      ],
+      "query_prompt": "核对跨图去向、双端真实关系、准确关联ID/图号和方向，并读取选定体系的原条款及例外。",
+      "lookup_before": [
+        "确定跨图/跨块接口之前"
+      ],
+      "check_after": [
+        "整图和双端接口对账之后",
+        "原生重开之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "提示核查已有关系；不发明去向、关联图号或多页拼装能力。"
+    },
+    {
+      "id": "signal_endpoint",
+      "aliases": [
+        "信号终点",
+        "测量引线",
+        "串级",
+        "signal endpoint"
+      ],
+      "drawing_kinds": [
+        "pid"
+      ],
+      "default_for": [
+        "pid"
+      ],
+      "modules": [
+        "instrumentation"
+      ],
+      "query_prompt": "审查已有信号/测量线的取样对象、功能/位置符号、信号种类、方向及执行器或SP真实终点；原条款/图例允许哪些特例？",
+      "lookup_before": [
+        "表达已给控制意图和冻结信号终点之前"
+      ],
+      "check_after": [
+        "实际端点/箭头/意图检查之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "PID默认仅审已有信号；不能新增仪表、阀件、回路、MV、FO/FC或定值，不继承案例控制策略。"
+    },
+    {
+      "id": "common_block",
+      "aliases": [
+        "组合块",
+        "阀组",
+        "泵组",
+        "回流",
+        "再沸",
+        "取样",
+        "common block",
+        "valve group",
+        "pump group",
+        "reflux",
+        "reboil",
+        "sampling"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid"
+      ],
+      "default_for": [],
+      "modules": [
+        "common",
+        "piping"
+      ],
+      "query_prompt": "查完整组合局部、上下文、组成、服务、边界接口及关联标准切片，明确本项目重新绑定参数和禁止继承字段。",
+      "lookup_before": [
+        "选择/实例化组合块和ImageGen之前"
+      ],
+      "check_after": [
+        "本次组成、端口和方向核实之后",
+        "拼接全图接口复查之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "块仅供学习/候选。不得因块存在添加其全部设备、控制或保护；项目接口和参数须重新核实。"
+    },
+    {
+      "id": "identification",
+      "aliases": [
+        "位号",
+        "管线号",
+        "图号",
+        "identification"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "default_for": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核对项目字典、准确位号/管线号/图号及关联表，来源字符串、单位和版本是否一致？",
+      "lookup_before": [
+        "添加标识和关联表之前"
+      ],
+      "check_after": [
+        "实际文字回读和图表对账之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "不照抄来源案例位号和数值，不跨标准拼字典；未决数据保留。"
+    },
+    {
+      "id": "stream_information",
+      "aliases": [
+        "流股参数",
+        "流股表",
+        "stream information"
+      ],
+      "drawing_kinds": [
+        "pfd"
+      ],
+      "default_for": [
+        "pfd"
+      ],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核对已给流股的准确字符串、温压流量、单位、工况及图表对应；保留压力原值/单位/未注明基准记录及用户绝压采用依据。",
+      "lookup_before": [
+        "填写PFD流股参数或关联表之前"
+      ],
+      "check_after": [
+        "实际文字/表及源数据对账之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "不计算或臆造流股数值；文献未注明基准时按用户规则采用绝压，不能写成文献明示或自动加减大气压。 用户明确授权训练数据时，单独scenario内逐字段标S，不冒充原文R或工程批准；原文读取及可靠推导仍优先。"
+    },
+    {
+      "id": "typography",
+      "aliases": [
+        "字体",
+        "字高",
+        "文字样式",
+        "typography"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "default_for": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核对来源字体文件/文字样式、采用标准的角色字高和准确字符串；实际字形和最终纸面是否可读？",
+      "lookup_before": [
+        "写字或更换字体/比例之前"
+      ],
+      "check_after": [
+        "实际TEXT/样式/字形回读之后",
+        "原生重开和实际PDF视觉复核之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "字体文件存在和元数据正确不证明真实字形；不在未核原文时固化规范字高或指定SHX。"
+    },
+    {
+      "id": "dimension",
+      "aliases": [
+        "标尺寸",
+        "尺寸标注",
+        "标注尺寸",
+        "长度尺寸",
+        "直径尺寸",
+        "角度尺寸",
+        "标注长度",
+        "标注直径",
+        "标注角度",
+        "dimensioning",
+        "dimension annotation",
+        "length dimension",
+        "diameter dimension",
+        "angular dimension"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "default_for": [],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "仅对本次明确的长度/直径/角度尺寸任务，核对来源字体、尺寸格式、适用尺寸标准及父条款/例外，再安排位置与标注线。",
+      "lookup_before": [
+        "明确尺寸任务之后且尺寸布局之前"
+      ],
+      "check_after": [
+        "实际尺寸/文字/标注线回读和纸面复核之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "DN/公称通径、设备名和普通数值不触发几何尺寸任务；不建立自动排尺寸引擎。"
+    },
+    {
+      "id": "plot_readability",
+      "aliases": [
+        "线宽",
+        "颜色",
+        "透明度",
+        "打印",
+        "出图",
+        "plot readability"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "default_for": [
+        "pfd",
+        "pid",
+        "equipment_condition",
+        "layout"
+      ],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核对选定来源/项目规则下有效线宽、线型、颜色、透明度、比例与打印样式，并在准确PDF和正常阅读比例预览确认可读性。",
+      "lookup_before": [
+        "冻结出图规则或更换比例/样式之前"
+      ],
+      "check_after": [
+        "实际CAD属性检查之后",
+        "原生重开及最终PDF/预览复核之后"
+      ],
+      "source_leads": [],
+      "review_boundary": "几何或原生往返保持不证明规范线型和真实打印效果；不写无实际文件证据的PASS。"
+    }
+  ]
+}

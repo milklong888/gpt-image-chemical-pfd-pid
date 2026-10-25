@@ -1,0 +1,4 @@
+ezdxf==1.4.3
+shapely==2.1.2
+jsonschema==4.26.0
+PyYAML>=6.0,<7

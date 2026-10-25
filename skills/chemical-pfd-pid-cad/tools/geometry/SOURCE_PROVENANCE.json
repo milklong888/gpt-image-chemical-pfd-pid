@@ -1,0 +1,66 @@
+{
+  "records": [
+    {
+      "candidate": "python/pfd_guard.py",
+      "source": "local independent tools/pfd-engine/scripts/pfd_guard.py",
+      "source_sha256": "c2b4969e5f111e5e14f00526d12cafbdf5d67a248dadb1ff3c991873ce7d12c5",
+      "copied_unchanged": true,
+      "rights_basis": "User-authorized first-party independent development; local separate-development and fixed-upstream comparison evidence. No upstream restriction overridden."
+    },
+    {
+      "candidate": "python/pfd_router.py",
+      "source": "local independent tools/pfd-engine/scripts/pfd_router.py",
+      "source_sha256": "c03a557a79977a613d199d56c8644b3d88ca2a044d840f79e1456937e3547487",
+      "copied_unchanged": true,
+      "rights_basis": "User-authorized first-party independent development; local separate-development and fixed-upstream comparison evidence. No upstream restriction overridden."
+    },
+    {
+      "candidate": "python/pfd_source_geometry.py",
+      "source": "local independent tools/pfd-engine/scripts/pfd_source_geometry.py",
+      "source_sha256": "4bd6a19a94fbda6306b18650694c9baabd477c492e0b2922ce49cd8131c88bae",
+      "copied_unchanged": true,
+      "rights_basis": "User-authorized first-party independent development; local separate-development and fixed-upstream comparison evidence. No upstream restriction overridden."
+    },
+    {
+      "candidate": "python/audit_lineweight_continuity.py",
+      "source": "local independent tools/pfd-engine/scripts/audit_lineweight_continuity.py",
+      "source_sha256": "235dd4ca703efb3472f1b9fa5eeb1bfc383a025920604defcc0fc560a7d12fb5",
+      "copied_unchanged": true,
+      "rights_basis": "User-authorized first-party independent development; local separate-development and fixed-upstream comparison evidence. No upstream restriction overridden."
+    },
+    {
+      "candidate": "tests/test_pfd_guard.py",
+      "source": "local independent guard-candidate test suite",
+      "source_sha256": "3c8cdedb091157297514e26aec46011836b4ec6a856dbc09e1ff70063a7cd560",
+      "matches_frozen_independent_development_record": true
+    },
+    {
+      "candidate": "python/pfd_runtime/route.mjs",
+      "source": "local independent PFD-v2 directional wrapper; separately installed libavoid is not included",
+      "source_sha256": "1ccaa0918116ef24e5fcacd62d0709c5425848579a0e9623bc2043a104cad877",
+      "copied_unchanged": true
+    },
+    {
+      "candidate": "native/NativeWriteGuard.cs",
+      "source": "this project native-runner/NativeWriteGuard.cs",
+      "source_sha256": "d66607aed13bb77e0615790cc1e775f0b91a7bfb13518a6033d71eca4d41110d",
+      "copied_unchanged": true
+    }
+  ],
+  "new_files": "All remaining Python tests/CLI/jump-arrow code and portable native adaptation were newly authored for this candidate; no private drawing values imported.",
+  "upstream_comparison": "audit/upstream-comparison.json",
+  "development_evidence_retained_by_maintainer": [
+    "work/pfd-v2/install_v2.py",
+    "work/pfd-v2/guard_candidate/validation-report.json",
+    "work/pfd-skill-refactor/dependency-audit.json"
+  ],
+  "not_an_ownership_proof_by_similarity_alone": true,
+  "native_output_revision": {
+    "baseline_native_sha256": "65d00b3fe9dcbbf5cae3f40ba61b47182d1eb765b7eecc845f9b15691d5eac08",
+    "current_native_sha256": "9fbba3109e5448f994fb7c7c37dc45246e64a22a28fb27f03aab7b0172c09594",
+    "helper_sha256": "c158af04df31cfc1f251f66e49cc555c693c239813b8219e95ba804fc5141c02",
+    "reason": "Independent review found rejected output path could overwrite an old receipt in finally; exclusive directory/file ownership fixes it.",
+    "pure_filesystem_regressions": 13,
+    "native_runtime_tested": false
+  }
+}

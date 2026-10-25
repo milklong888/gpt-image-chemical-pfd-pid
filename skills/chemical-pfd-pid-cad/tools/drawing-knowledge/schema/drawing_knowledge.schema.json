@@ -1,0 +1,344 @@
+{
+  "$defs": {
+    "BoundingBox": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "b": {
+          "type": "number"
+        },
+        "coordinate_origin": {
+          "type": "string"
+        },
+        "l": {
+          "type": "number"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "r": {
+          "type": "number"
+        },
+        "t": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "page",
+        "l",
+        "t",
+        "r",
+        "b",
+        "coordinate_origin"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "EvidenceStatus": {
+      "description": "",
+      "enum": [
+        "extracted_candidate",
+        "reviewed_historical",
+        "reviewed_case",
+        "workflow_policy",
+        "project_approved",
+        "superseded",
+        "unknown"
+      ],
+      "title": "EvidenceStatus",
+      "type": "string"
+    },
+    "KnowledgeBase": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/KnowledgeNode"
+          },
+          "type": "array"
+        },
+        "relations": {
+          "items": {
+            "$ref": "#/$defs/KnowledgeRelation"
+          },
+          "type": "array"
+        },
+        "schema_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "nodes",
+        "relations"
+      ],
+      "title": "KnowledgeBase",
+      "type": "object"
+    },
+    "KnowledgeNode": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "aliases": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "bounding_boxes": {
+          "items": {
+            "$ref": "#/$defs/BoundingBox"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "cad_handles": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "clause_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "condition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "drawing_kinds": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "exception": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/NodeKind"
+        },
+        "label": {
+          "type": "string"
+        },
+        "modality": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modules": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "payload_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "physical_pages": {
+          "items": {
+            "type": "integer"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "printed_page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "standard_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/EvidenceStatus"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valid_for_release": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "status",
+        "valid_for_release"
+      ],
+      "title": "KnowledgeNode",
+      "type": "object"
+    },
+    "KnowledgeRelation": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "object": {
+          "type": "string"
+        },
+        "predicate": {
+          "$ref": "#/$defs/RelationKind"
+        },
+        "status": {
+          "$ref": "#/$defs/EvidenceStatus"
+        },
+        "subject": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "subject",
+        "predicate",
+        "object",
+        "status"
+      ],
+      "title": "KnowledgeRelation",
+      "type": "object"
+    },
+    "NodeKind": {
+      "description": "",
+      "enum": [
+        "Source",
+        "StandardVersion",
+        "ClauseCandidate",
+        "CasePattern",
+        "Requirement",
+        "Module",
+        "EquipmentConcept",
+        "DrawingKind",
+        "Field",
+        "SymbolRepresentation",
+        "Port",
+        "Check"
+      ],
+      "title": "NodeKind",
+      "type": "string"
+    },
+    "RelationKind": {
+      "description": "",
+      "enum": [
+        "part_of",
+        "evidenced_by",
+        "candidate_for",
+        "applies_to",
+        "requires",
+        "has_field",
+        "represented_by",
+        "has_port",
+        "checked_by",
+        "broader",
+        "depends_on",
+        "supersedes",
+        "illustrates"
+      ],
+      "title": "RelationKind",
+      "type": "string"
+    }
+  },
+  "$id": "https://example.org/chemical-drawing/knowledge-v4",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": false,
+  "description": "",
+  "metamodel_version": "1.12.0",
+  "properties": {
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/KnowledgeNode"
+      },
+      "type": "array"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/KnowledgeRelation"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "nodes",
+    "relations"
+  ],
+  "title": "drawing_knowledge",
+  "type": "object",
+  "version": null
+}

@@ -1,0 +1,2 @@
+# Optional; license review required (AGPL/commercial options). Not a bundled component.
+PyMuPDF==2.0

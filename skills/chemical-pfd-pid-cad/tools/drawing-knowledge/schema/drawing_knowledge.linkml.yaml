@@ -1,0 +1,97 @@
+id: https://example.org/chemical-drawing/knowledge-v4
+name: drawing_knowledge
+description: Source-bound drawing evidence and typed relationships; equipment concept identifiers reference the existing equipment_knowledge catalog.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  skos: http://www.w3.org/2004/02/skos/core#
+  dk: https://example.org/chemical-drawing/
+default_prefix: dk
+default_range: string
+imports:
+  - linkml:types
+enums:
+  NodeKind:
+    permissible_values:
+      Source: {}
+      StandardVersion: {}
+      ClauseCandidate: {}
+      CasePattern: {}
+      Requirement: {}
+      Module: {}
+      EquipmentConcept: {}
+      DrawingKind: {}
+      Field: {}
+      SymbolRepresentation: {}
+      Port: {}
+      Check: {}
+  EvidenceStatus:
+    permissible_values:
+      extracted_candidate: {}
+      reviewed_historical: {}
+      reviewed_case: {}
+      workflow_policy: {}
+      project_approved: {}
+      superseded: {}
+      unknown: {}
+  RelationKind:
+    permissible_values:
+      part_of: {}
+      evidenced_by: {}
+      candidate_for: {}
+      applies_to: {}
+      requires: {}
+      has_field: {}
+      represented_by: {}
+      has_port: {}
+      checked_by: {}
+      broader: {}
+      depends_on: {}
+      supersedes: {}
+      illustrates: {}
+classes:
+  KnowledgeBase:
+    tree_root: true
+    attributes:
+      schema_version: {required: true}
+      nodes: {range: KnowledgeNode, multivalued: true, inlined_as_list: true, required: true}
+      relations: {range: KnowledgeRelation, multivalued: true, inlined_as_list: true, required: true}
+  KnowledgeNode:
+    attributes:
+      id: {identifier: true, required: true}
+      kind: {range: NodeKind, required: true}
+      label: {required: true, slot_uri: 'skos:prefLabel'}
+      aliases: {multivalued: true, slot_uri: 'skos:altLabel'}
+      status: {range: EvidenceStatus, required: true}
+      text: {}
+      source_id: {}
+      source_sha256: {pattern: '^[0-9a-f]{64}$'}
+      source_path: {}
+      physical_pages: {multivalued: true, range: integer}
+      printed_page: {}
+      clause_id: {}
+      standard_id: {}
+      condition: {}
+      exception: {}
+      modality: {}
+      modules: {multivalued: true}
+      drawing_kinds: {multivalued: true}
+      evidence_ids: {multivalued: true}
+      payload_path: {}
+      bounding_boxes: {multivalued: true, range: BoundingBox, inlined_as_list: true}
+      cad_handles: {multivalued: true}
+      valid_for_release: {range: boolean, required: true}
+  BoundingBox:
+    attributes:
+      page: {range: integer, required: true}
+      l: {range: float, required: true}
+      t: {range: float, required: true}
+      r: {range: float, required: true}
+      b: {range: float, required: true}
+      coordinate_origin: {required: true}
+  KnowledgeRelation:
+    attributes:
+      subject: {required: true}
+      predicate: {range: RelationKind, required: true}
+      object: {required: true}
+      evidence_ids: {multivalued: true}
+      status: {range: EvidenceStatus, required: true}

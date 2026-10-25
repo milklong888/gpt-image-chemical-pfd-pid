@@ -1,0 +1,54 @@
+{
+  "upstream": {
+    "repository": "Ahuaisnotficklehearted/chemical-autocad-drafting1.3",
+    "commit": "f660054c1b696bac845500816aabcd2dc745a901",
+    "source_files_compared": 31,
+    "all_git_blob_identities_verified": true,
+    "license_status": "Non-commercial restriction in retained upstream author notice; upstream-derived modules excluded from proposed open-source core."
+  },
+  "modules": [
+    {
+      "local_module": "pfd_guard.py",
+      "local_sha256": "c2b4969e5f111e5e14f00526d12cafbdf5d67a248dadb1ff3c991873ce7d12c5",
+      "same_basename_in_fixed_upstream_tree": false,
+      "exact_40_token_overlap": [],
+      "interpretation": "Comparison is supporting evidence, not a standalone copyright/ownership determination. Local separate-development records must also support inclusion."
+    },
+    {
+      "local_module": "pfd_router.py",
+      "local_sha256": "c03a557a79977a613d199d56c8644b3d88ca2a044d840f79e1456937e3547487",
+      "same_basename_in_fixed_upstream_tree": false,
+      "exact_40_token_overlap": [],
+      "interpretation": "Comparison is supporting evidence, not a standalone copyright/ownership determination. Local separate-development records must also support inclusion."
+    },
+    {
+      "local_module": "pfd_source_geometry.py",
+      "local_sha256": "4bd6a19a94fbda6306b18650694c9baabd477c492e0b2922ce49cd8131c88bae",
+      "same_basename_in_fixed_upstream_tree": false,
+      "exact_40_token_overlap": [],
+      "interpretation": "Comparison is supporting evidence, not a standalone copyright/ownership determination. Local separate-development records must also support inclusion."
+    },
+    {
+      "local_module": "test_pfd_guard.py",
+      "local_sha256": "3c8cdedb091157297514e26aec46011836b4ec6a856dbc09e1ff70063a7cd560",
+      "same_basename_in_fixed_upstream_tree": false,
+      "exact_40_token_overlap": [],
+      "interpretation": "Comparison is supporting evidence, not a standalone copyright/ownership determination. Local separate-development records must also support inclusion."
+    },
+    {
+      "local_module": "audit_lineweight_continuity.py",
+      "local_sha256": "235dd4ca703efb3472f1b9fa5eeb1bfc383a025920604defcc0fc560a7d12fb5",
+      "same_basename_in_fixed_upstream_tree": false,
+      "exact_40_token_overlap": [],
+      "interpretation": "Comparison is supporting evidence, not a standalone copyright/ownership determination. Local separate-development records must also support inclusion."
+    },
+    {
+      "local_module": "pfd_stroke.py",
+      "local_sha256": "baea02fcca77d9b56ec9ccc944365a197230c90b3c880e43f0c08d4261763a27",
+      "same_basename_in_fixed_upstream_tree": false,
+      "exact_40_token_overlap": [],
+      "interpretation": "Comparison is supporting evidence, not a standalone copyright/ownership determination. Local separate-development records must also support inclusion."
+    }
+  ],
+  "upstream_source_retained_or_executed": false
+}

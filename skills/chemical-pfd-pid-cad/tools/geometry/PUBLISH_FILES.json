@@ -1,0 +1,213 @@
+{
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 89,
+      "sha256": "2e2d7873c7278aead017cb0da49c493381371caf3abf822d1ab7c720a8793159",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "PROVENANCE.md",
+      "bytes": 3330,
+      "sha256": "a8f1b4d180ace7b92bf72048e437c1a24b4a90e35a8ef0d5bc6c0ebbabaf8fae",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6558,
+      "sha256": "597c85d1a8daa4819bd522743936c47b1ea4e44df3f2631f585d9c452dc967ae",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "SOURCE_PROVENANCE.json",
+      "bytes": 3725,
+      "sha256": "7a43dce172660546692276d98c7ea6b7e714137af416eb7ef1fcce751ebb252d",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1341,
+      "sha256": "b3cf0d3d81f8995205b1452d8776350b6c8e83d1825547a3cf54d518335edb33",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "audit/run_offline_validation.py",
+      "bytes": 2056,
+      "sha256": "c6de2e85c0bb8720fb98ff4bae0c24b36890fd7cd8be1fa92ef3e8668e191b8b",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "audit/upstream-comparison.json",
+      "bytes": 2984,
+      "sha256": "23697d1411f3fd464445fedbc100e4340dd054d0314e62454499f948d0788a4f",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "examples/synthetic-route.json",
+      "bytes": 2229,
+      "sha256": "5e68e1ced120b7b99f0d162eaa77113c9396e63d2cbb5242702e1e0b237fca77",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "licenses/libavoid-js-LGPL-2.1.txt",
+      "bytes": 26527,
+      "sha256": "6da7ddf40cfea6f568961825b14478e879875f6ad033fad57889ae5bd52103f4",
+      "scope": "third-party license text only"
+    },
+    {
+      "path": "native/NativeAudit.cs",
+      "bytes": 8748,
+      "sha256": "9fbba3109e5448f994fb7c7c37dc45246e64a22a28fb27f03aab7b0172c09594",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/NativeWriteGuard.cs",
+      "bytes": 854,
+      "sha256": "d66607aed13bb77e0615790cc1e775f0b91a7bfb13518a6033d71eca4d41110d",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/NativeWriteGuardTest.cs",
+      "bytes": 989,
+      "sha256": "4a01877f50e11f09d0144fba5571a4b858e22559d1cb25f1aa1d37b5c5dd64c7",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/OwnedNativeAuditOutput.cs",
+      "bytes": 2537,
+      "sha256": "c158af04df31cfc1f251f66e49cc555c693c239813b8219e95ba804fc5141c02",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/OwnedNativeAuditOutputTest.cs",
+      "bytes": 4478,
+      "sha256": "e1be8734d79b1a2f10874b4de642da6c0fc787443f711c6fa8592533181b2ca7",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/compile_native.py",
+      "bytes": 3835,
+      "sha256": "1a5d5d8c6827e28a0616aecbc18076abce86d8a4d93d397aa3eaeb25dee4fd61",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/emit_script.py",
+      "bytes": 2339,
+      "sha256": "738638051af9d4e0b08b750b959a6e24976f5e6b7c13eefe23b9a84145230ef6",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/job.template.json",
+      "bytes": 246,
+      "sha256": "c237d225ff5ea97c1c52d25cad03b7c27259fe9777d99c5f1d1ff35b1eab11bb",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "native/run_output_tests.py",
+      "bytes": 2570,
+      "sha256": "baae154f226f708a8348344d5e6a43ccd36aff0de0e539e931231cf0e2395f72",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 540,
+      "sha256": "d4601221cca210ec8394e1f12e497f3b5a05b626192121c62719b0391b51f611",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/audit_lineweight_continuity.py",
+      "bytes": 10077,
+      "sha256": "235dd4ca703efb3472f1b9fa5eeb1bfc383a025920604defcc0fc560a7d12fb5",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_cli.py",
+      "bytes": 1607,
+      "sha256": "a4af324c9240b026468fc225ed2ea8d44eec56cc9d8424d2f6f8d51e5298bb1d",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_guard.py",
+      "bytes": 15432,
+      "sha256": "c2b4969e5f111e5e14f00526d12cafbdf5d67a248dadb1ff3c991873ce7d12c5",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_primitives.py",
+      "bytes": 8839,
+      "sha256": "2fcefdb237b9a9a73bdd069a93bccaf9cd73993f4d0a47063c9b3abf49f8a1e3",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_router.py",
+      "bytes": 11229,
+      "sha256": "c03a557a79977a613d199d56c8644b3d88ca2a044d840f79e1456937e3547487",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_runtime/dependency-lock.json",
+      "bytes": 398,
+      "sha256": "37618077594b5500bc0abcfd3d1ff72a9d061cf0cec5c33fbf918bd0073c7de6",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_runtime/package.json",
+      "bytes": 148,
+      "sha256": "ab4e6a4a97063fa847983251c3b21c2f8e679dd3fbf7a6be9a8b03b9cefaf96f",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_runtime/route.mjs",
+      "bytes": 3336,
+      "sha256": "1ccaa0918116ef24e5fcacd62d0709c5425848579a0e9623bc2043a104cad877",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "python/pfd_source_geometry.py",
+      "bytes": 1657,
+      "sha256": "4bd6a19a94fbda6306b18650694c9baabd477c492e0b2922ce49cd8131c88bae",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "tests/test_native_offline.py",
+      "bytes": 1391,
+      "sha256": "6425f95c1ed54cc5edbe2aeae51088b8acd3926c10db1772147b2b68c200d394",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "tests/test_pfd_guard.py",
+      "bytes": 7094,
+      "sha256": "3c8cdedb091157297514e26aec46011836b4ec6a856dbc09e1ff70063a7cd560",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "tests/test_primitives.py",
+      "bytes": 4818,
+      "sha256": "8f1838a8ebb526e773cc5c3999b2939a1ee43996a256957dda7044abc0a4c1be",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "tests/test_router_contract.py",
+      "bytes": 1744,
+      "sha256": "b90053dc9dd638d8d4bdafe70fd2e9f12428d9e376b4abf2787a622777cbf42a",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    },
+    {
+      "path": "tests/test_source_geometry.py",
+      "bytes": 1387,
+      "sha256": "3a75ae7c438897002ade927248a98e53cea063bd7aaf2dfddfe4670724d18295",
+      "scope": "first-party source/documentation or synthetic test; third-party dependencies retain their own licenses"
+    }
+  ],
+  "metadata_file": "PUBLISH_FILES.json",
+  "excluded": [
+    "build/**",
+    "validation-output/**",
+    "__pycache__/**",
+    "node_modules/**",
+    "audit/compare_upstream.py"
+  ],
+  "copy_policy": "Copy only listed files plus this manifest. Do not copy the entire preparation directory, and do not rely on .gitignore as the only release filter.",
+  "binaries_or_private_assets_in_allowlist": false,
+  "revision": "root accepted exclusive native output correction; no CAD runtime claim"
+}
