@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "scope": "Public-package tests executed locally; independent from historical drawing delivery.",
+  "scope": "Public-package tests executed locally and in clean GitHub Actions jobs; independent from historical drawing delivery.",
   "geometry": {
     "passed": true,
     "tests_discovered": 58,
@@ -35,8 +35,16 @@
     "AutoCAD_version_target": "2026",
     "executed_in_AutoCAD": false
   },
-  "fresh_environment_install_verified": false,
-  "remote_CI_verified": false,
+  "fresh_environment_install_verified": true,
+  "remote_CI_verified": true,
+  "remote_CI": {
+    "run_url": "https://github.com/milklong888/gpt-image-chemical-pfd-pid/actions/runs/40189267941",
+    "commit": "d896203a461123377042e2bc12c8c8674fbb9104",
+    "conclusion": "success",
+    "environment": "Ubuntu, Python 3.12; dependencies installed in clean jobs",
+    "verified": ["release checks", "4 package tests", "58 geometry tests including actual libavoid", "7 portable knowledge tests", "actual ZIP ingestion, classification, assembly and LinkML validation"],
+    "not_verified": ["private corpus", "embedding model download", "OCR model installation", "AutoCAD execution", "engineering drawing acceptance"]
+  },
   "private_corpus_distributed": false,
   "engineering_release": false
 }
