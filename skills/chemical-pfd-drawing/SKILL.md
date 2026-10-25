@@ -12,3 +12,7 @@ description: 按项目依据绘制、规划或修复PFD，表达设备、物料�
 先按[策划检索](../chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md)追原页、图例和实际接口；再将完整适用图例与内容合同交给GPT-image。输出终点、跨图去向和回流须明确；图像文字/箭头不能掩盖断口。整图精度不足按[分块流程](../chemical-pfd-pid-cad/references/LARGE_FLOW_LAYOUT.md)处理。
 
 按[实际验收](../chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md)核真实端点、法向、全线、短接管等宽、重叠、图表对应及原生文件。保持来源色号/字形；真实不可读才修正。公开检查器不等于任意拓扑自动绘图器。
+
+<!-- milklong-attribution:start -->
+作者：milklong（GitHub：milklong888）。[版权与AI辅助编辑署名规则](ATTRIBUTION.md)。
+<!-- milklong-attribution:end -->

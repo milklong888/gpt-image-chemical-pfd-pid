@@ -12,3 +12,7 @@ description: 依据已有设备设计规划或绘制设备条件图、视图、�
 长度等尺寸先读[标准和字体](../chemical-pfd-pid-cad/references/STANDARDS_AND_TYPOGRAPHY.md)，保留原始测量、显示文字、倍率、单位及覆盖值。GPT-image安排版面和尺寸线，不能确定制造尺寸。随包尺寸工具是只读核查，不自动排尺寸或改图。
 
 按[几何与原生验收](../chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md)核视图、表格、接口、字体和实际文件。设备机械细节不自动成为PFD图例，专业设计核准另行完成。
+
+<!-- milklong-attribution:start -->
+作者：milklong（GitHub：milklong888）。[版权与AI辅助编辑署名规则](ATTRIBUTION.md)。
+<!-- milklong-attribution:end -->

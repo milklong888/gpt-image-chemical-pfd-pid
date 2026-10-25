@@ -1,0 +1,273 @@
+{
+  "schema": "milklong-attribution/v1",
+  "author": "milklong",
+  "project_url": "https://github.com/milklong888/gpt-image-chemical-pfd-pid",
+  "skill_root": "skills",
+  "entries": [
+    {
+      "path": "scripts/check_attribution.py",
+      "sidecar": "scripts/check_attribution.py.license"
+    },
+    {
+      "path": "scripts/check_release.py",
+      "sidecar": "scripts/check_release.py.license"
+    },
+    {
+      "path": "scripts/install_skills.py",
+      "sidecar": "scripts/install_skills.py.license"
+    },
+    {
+      "path": "scripts/test_attribution.py",
+      "sidecar": "scripts/test_attribution.py.license"
+    },
+    {
+      "path": "skills/chemical-drawing-knowledge/SKILL.md",
+      "sidecar": "skills/chemical-drawing-knowledge/SKILL.md.license"
+    },
+    {
+      "path": "skills/chemical-equipment-drawing/SKILL.md",
+      "sidecar": "skills/chemical-equipment-drawing/SKILL.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-drawing/SKILL.md",
+      "sidecar": "skills/chemical-pfd-drawing/SKILL.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/SKILL.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/SKILL.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/DRAWING_AND_CONTROL.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/DRAWING_AND_CONTROL.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/INDEPENDENT_REVIEW.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/INDEPENDENT_REVIEW.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/LARGE_FLOW_LAYOUT.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/LARGE_FLOW_LAYOUT.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/SOURCE_COMPLETION.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/SOURCE_COMPLETION.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/STANDARDS_AND_TYPOGRAPHY.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/STANDARDS_AND_TYPOGRAPHY.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/README.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/README.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/additional_content.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/additional_content.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/build_modules.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/build_modules.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/check_plan_scope.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/check_plan_scope.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/disk_index_cache.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/disk_index_cache.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/drafting_topics.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/drafting_topics.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/knowledge.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/knowledge.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/literal_candidates.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/literal_candidates.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/analyze_assembly_duplicates.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/analyze_assembly_duplicates.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/collect_coverage.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/collect_coverage.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/docling_adapter.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/docling_adapter.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/native_pdf_batch.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/parser/native_pdf_batch.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/portable_config.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/portable_config.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/registry/classify_sources.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/registry/classify_sources.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/registry/ingest_archives.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/registry/ingest_archives.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/retrieval_gate.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/retrieval_gate.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/source_context.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/source_context.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/source_repair.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/engine/source_repair.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/examples/create_demo.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/examples/create_demo.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/tests/test_portable.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/tests/test_portable.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/tests/test_zip_roundtrip.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/drawing-knowledge/tests/test_zip_roundtrip.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/PROVENANCE.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/PROVENANCE.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/README.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/README.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/audit/run_offline_validation.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/audit/run_offline_validation.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/NativeAudit.cs",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/NativeAudit.cs.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/NativeWriteGuard.cs",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/NativeWriteGuard.cs.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/NativeWriteGuardTest.cs",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/NativeWriteGuardTest.cs.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/OwnedNativeAuditOutput.cs",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/OwnedNativeAuditOutput.cs.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/OwnedNativeAuditOutputTest.cs",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/OwnedNativeAuditOutputTest.cs.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/compile_native.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/compile_native.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/emit_script.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/emit_script.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/native/run_output_tests.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/native/run_output_tests.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/audit_lineweight_continuity.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/audit_lineweight_continuity.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_cli.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_cli.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_guard.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_guard.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_primitives.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_primitives.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_router.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_router.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_runtime/route.mjs",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_runtime/route.mjs.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_source_geometry.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_source_geometry.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_native_offline.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_native_offline.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_pfd_guard.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_pfd_guard.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_primitives.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_primitives.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_router_contract.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_router_contract.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_source_geometry.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_source_geometry.py.license"
+    },
+    {
+      "path": "skills/chemical-pid-drawing/SKILL.md",
+      "sidecar": "skills/chemical-pid-drawing/SKILL.md.license"
+    }
+  ],
+  "policy_files": [
+    "ATTRIBUTION.md",
+    "skills/chemical-drawing-knowledge/ATTRIBUTION.md",
+    "skills/chemical-equipment-drawing/ATTRIBUTION.md",
+    "skills/chemical-pfd-drawing/ATTRIBUTION.md",
+    "skills/chemical-pfd-pid-cad/ATTRIBUTION.md",
+    "skills/chemical-pid-drawing/ATTRIBUTION.md"
+  ],
+  "license_files": [
+    "LICENSE",
+    "skills/chemical-drawing-knowledge/LICENSE",
+    "skills/chemical-equipment-drawing/LICENSE",
+    "skills/chemical-pfd-drawing/LICENSE",
+    "skills/chemical-pfd-pid-cad/LICENSE",
+    "skills/chemical-pid-drawing/LICENSE"
+  ],
+  "scope": "Original project contributions only; existing third-party notices remain. Maintenance check, not engineering execution or copy prevention."
+}

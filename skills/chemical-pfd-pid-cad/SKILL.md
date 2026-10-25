@@ -2,7 +2,7 @@
 name: chemical-pfd-pid-cad
 description: 绘制、修复或审查化工PFD、PID与设备条件图；先检索标准、案例与完整原图例，再以GPT-image布局、真实端口接线和实际CAD回读交付。不是工艺或制造设计计算器。
 metadata:
-  workflow-version: "4.17-public-0.1.2"
+  workflow-version: "4.17-public-0.1.3"
 ---
 
 # 化工绘图总控
@@ -26,3 +26,7 @@ Aspen等上游任务只委托PFD布局时，先读[Image布局前段](references
 复杂新任务可用多代理形成候选；候选作者不兼任该版独立审阅者，主代理核对来源、接纳修改并负责最终版本。三关按各自证据判断，独立审阅按复杂度安排，不固定每关三人。修订后回到受影响关口并重验下游，未变部分明确引用有效基线。经验改进要保留原失败和实际复测，不把修正原题当泛化，也不宣称训练了模型权重。
 
 公开包与本地完整版的能力不同：可执行工具以随包说明为准，不调用已退役旧绘图入口；缺所需拓扑/原生能力时明确缺口，不输出假成功。
+
+<!-- milklong-attribution:start -->
+作者：milklong（GitHub：milklong888）。[版权与AI辅助编辑署名规则](ATTRIBUTION.md)。
+<!-- milklong-attribution:end -->

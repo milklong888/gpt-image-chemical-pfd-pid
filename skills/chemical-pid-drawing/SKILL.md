@@ -14,3 +14,7 @@ description: 按来源连接与控制意图规划、绘制或审查P&ID；核测
 GPT-image负责新图布局。过程线、测量引线、控制信号按采用图例分别表达与核验；信号箭头按语义和标准选择，不机械给每根引线加箭头。跨块保留完整回路或显式两端合同，见[分块流程](../chemical-pfd-pid-cad/references/LARGE_FLOW_LAYOUT.md)。
 
 按[实际验收](../chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md)回读CAD及原生预览。当前公开包不包含任意PID的通用生成器；特定历史案例通过不能作为新装置通过证明。
+
+<!-- milklong-attribution:start -->
+作者：milklong（GitHub：milklong888）。[版权与AI辅助编辑署名规则](ATTRIBUTION.md)。
+<!-- milklong-attribution:end -->

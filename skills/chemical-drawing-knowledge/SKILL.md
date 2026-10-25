@@ -14,3 +14,7 @@ description: 登记、切片、检索化工标准与图纸并挂设备模块；�
 语义、关键词和精确工程标识符共同检索；工程号保留分隔符与末位，来源/标准过滤必须约束所有通道。命中后读原件和邻接关系，精确结果也不是已批准事实。
 
 按[溯源补库](../chemical-pfd-pid-cad/references/SOURCE_COMPLETION.md)处理切片/索引/模块缺口。源更新使相关回执失效，重新建索引、原题重检及模块校验。真实知识库由使用者有权使用的资料建立，公开合成材料不替代标准库。
+
+<!-- milklong-attribution:start -->
+作者：milklong（GitHub：milklong888）。[版权与AI辅助编辑署名规则](ATTRIBUTION.md)。
+<!-- milklong-attribution:end -->
