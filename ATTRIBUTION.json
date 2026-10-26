@@ -255,6 +255,18 @@
     {
       "path": "skills/chemical-pid-drawing/SKILL.md",
       "sidecar": "skills/chemical-pid-drawing/SKILL.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/typography/README.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/typography/README.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/typography/native_text_envelopes.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/typography/native_text_envelopes.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/typography/test_native_text_envelopes.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/typography/test_native_text_envelopes.py.license"
     }
   ],
   "policy_files": [
