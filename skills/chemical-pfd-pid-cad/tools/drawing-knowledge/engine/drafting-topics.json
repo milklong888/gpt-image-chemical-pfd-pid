@@ -266,7 +266,10 @@
       "aliases": [
         "流股参数",
         "流股表",
-        "stream information"
+        "stream information",
+        "流股标注",
+        "物流编号",
+        "图内物流表"
       ],
       "drawing_kinds": [
         "pfd"
@@ -277,15 +280,20 @@
       "modules": [
         "common"
       ],
-      "query_prompt": "核对已给流股的准确字符串、温压流量、单位、工况及图表对应；保留压力原值/单位/未注明基准记录及用户绝压采用依据。",
+      "query_prompt": "核流股号/方向在实际流线上的归属，以及T/P/F的线旁标注、图内表或成套续表页；读取同案或国赛作品的数据区/表头和标准，核准确值、单位、工况及图表对应，外部表不能代替落图。保留压力原值/未注明记录及用户绝压采用依据。",
       "lookup_before": [
         "填写PFD流股参数或关联表之前"
       ],
       "check_after": [
         "实际文字/表及源数据对账之后"
       ],
-      "source_leads": [],
-      "review_boundary": "不计算或臆造流股数值；文献未注明基准时按用户规则采用绝压，不能写成文献明示或自动加减大气压。 用户明确授权训练数据时，单独scenario内逐字段标S，不冒充原文R或工程批准；原文读取及可靠推导仍优先。"
+      "source_leads": [
+        {
+          "locator": "references/STREAM_AND_PIPE_ANNOTATION.md",
+          "status": "workflow_locator_only_not_standard_approval"
+        }
+      ],
+      "review_boundary": "先读取和溯源，有明确关系才推导，不无据计算或臆造流股数值；文献未注明基准时按用户规则采用绝压，不能写成文献明示或自动加减大气压。 用户明确授权训练数据时，单独scenario内逐字段标S，不冒充原文R或工程批准；原文读取及可靠推导仍优先。"
     },
     {
       "id": "typography",
@@ -394,6 +402,80 @@
       ],
       "source_leads": [],
       "review_boundary": "几何或原生往返保持不证明规范线型和真实打印效果；不写无实际文件证据的PASS。"
+    },
+    {
+      "id": "piping_information",
+      "aliases": [
+        "管道组合号",
+        "管道标注",
+        "PID管道",
+        "管线规格",
+        "piping identification"
+      ],
+      "drawing_kinds": [
+        "pid"
+      ],
+      "default_for": [
+        "pid"
+      ],
+      "modules": [
+        "common",
+        "piping"
+      ],
+      "query_prompt": "沿真实管口和已核PFD追踪工艺/公用工程管道，核管道组合号、DN/规格、等级和适用绝热代号；读项目图例及HG/T20519采用版本的12.1编号例外、12.2格式和12.3边界。实际管道、信号线与流股编号分开，不从案例填DN或漏画例外管段。",
+      "lookup_before": [
+        "组织PID物理管道和Image提示之前",
+        "标注或改变管段/主项边界之前"
+      ],
+      "check_after": [
+        "Image管道/组合号逐项看图之后",
+        "重开CAD实体文字、图表映射与打印可见性检查之后"
+      ],
+      "source_leads": [
+        {
+          "locator": "references/STREAM_AND_PIPE_ANNOTATION.md",
+          "status": "workflow_locator_only_not_standard_approval"
+        },
+        {
+          "locator": "HG/T 20519-2009 第2部分12.1–12.3；先核项目版本与适用例外",
+          "status": "historical_source_locator_not_current_project_approval"
+        }
+      ],
+      "review_boundary": "仅触发查证，不新增实际管线、阀件、规格或设计参数；编号例外不等于省略物理连接，PFD流股可映射多个PID管段。"
+    },
+    {
+      "id": "competition_reference",
+      "aliases": [
+        "国赛",
+        "全国大学生化工设计竞赛",
+        "获奖作品"
+      ],
+      "drawing_kinds": [
+        "pfd",
+        "pid"
+      ],
+      "default_for": [],
+      "modules": [
+        "common"
+      ],
+      "query_prompt": "核作品真实项目/赛事身份，读同案图例、PFD物流数据区或PID完整管道局部；用当届官方评分细则及项目适用标准复核，区分原图可见、规则支持和本项目采用，保留原作品错误或歧义。",
+      "lookup_before": [
+        "采用国赛作品画法之前"
+      ],
+      "check_after": [
+        "采用/拒绝理由和当前图纸字段逐项核对之后"
+      ],
+      "source_leads": [
+        {
+          "locator": "https://iche.zju.edu.cn/uploads/20260227/465f77392339a76e07d1c2f33d1098f0.pdf",
+          "status": "competition_2026_rubric_not_universal_standard"
+        },
+        {
+          "locator": "references/STREAM_AND_PIPE_ANNOTATION.md",
+          "status": "workflow_locator_only_not_standard_approval"
+        }
+      ],
+      "review_boundary": "来源作品不是自动正确的标准；只学习有据表达，不继承工况、管径、等级、材质、定值或控制配对。"
     }
   ]
 }

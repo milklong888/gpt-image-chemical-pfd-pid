@@ -69,6 +69,10 @@
       "sidecar": "skills/chemical-pfd-pid-cad/references/STANDARDS_AND_TYPOGRAPHY.md.license"
     },
     {
+      "path": "skills/chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md.license"
+    },
+    {
       "path": "skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py",
       "sidecar": "skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py.license"
     },

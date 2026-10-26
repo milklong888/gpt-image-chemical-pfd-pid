@@ -5,6 +5,8 @@ description: 按来源连接与控制意图规划、绘制或审查P&ID；核测
 
 # PID专项
 
+新绘或补全PID时，先读[流股落图与管道表达](../chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md)：先画来源支持的工艺/公用工程管道网络及管道组合号，再叠加测控。管线清单或控制虚线不能代替实际管道；编号例外须核原条条件，不能漏画。国赛作品参考完整局部与图例，不照搬DN、等级和工程数值。
+
 先读[总控](../chemical-pfd-pid-cad/SKILL.md)。实际取得drawing=pid检索包，加载common、piping、instrumentation及涉及设备模块；塔配冷凝器/再沸器/回流罐须追加相应模块，反应精馏涉及tower和reactor。
 
 按[策划检索](../chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md)记录原图连续连接：设备取口/管段→测点→仪表功能→执行器或下级SP。编号和颜色不是连接证据。原图已有关系与项目批准分开，不能因定值未知就抹掉可读关系。

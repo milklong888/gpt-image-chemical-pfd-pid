@@ -22,6 +22,8 @@ drawing_use: Aspen 原生排布参考 / 报告工程 PFD
 stop_after: image_review
 ```
 
+工程PFD布局按[流股落图要求](STREAM_AND_PIPE_ANNOTATION.md)同时安排编号、线旁数据/图内表及成套续表引用；返回图片中须实际可见并能对账。纯Aspen原生排布参考按其已约定标签范围检查，不冒称完整工程PFD。
+
 ## 只执行前两关
 
 1. 读取总控和 [PFD专项](../../chemical-pfd-drawing/SKILL.md) 中适用的检索、标准、图例与信息表达规则，再按 [第一关](INDEPENDENT_REVIEW.md) 核内容、来源、准确文字与 Image 提示的一致性。库内残缺先溯源补齐；影响布局或拓扑的错误退回调用者的合同，不让图像选择工艺版本。
