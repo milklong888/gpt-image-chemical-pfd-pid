@@ -13,6 +13,8 @@
 
 两阶段请求均为 `cad_allowed=false/delivery_allowed=false`。探索通过不能继承为标准阶段通过；三轮只准二次生成，不声称首图已改好或尚未生成的二次图已符合国标。二次图须实际看过、按适用标准和完整图例修改复核；有硬错继续改/再生成，之后才可按下游门返回已核布局或进入 CAD。原生 CAD 接口/端口/回读另审。
 
+Image 两阶段都不要求字体参考，不以 Image 验收字体、字形或准确造字；只要求标注空间和可辨对象 ID。准确标签及数值仍保留在语义合同中，实际字体可用性、字形、准确落字与缺字/乱码由 CAD/Aspen 落字后的原生输出及回读负责。可选 `font_reference` 仅作普通视觉参考，核验其图片身份/hash，不变成 Image 字体门槛。
+
 大流程沿用原 [分块生成与总排布工作流](../../references/LARGE_FLOW_LAYOUT.md) 和 [Image 输入合同](../../references/IMAGE_INPUT_CONTRACT.md)，不新造分块算法或全局 schema；本入口不自动分块、拼接或完成总图装配。先理解工艺和模块耦合、划定功能块；每块按“探索→标准修正三轮→二次生成→实际图后核改”完成，合格小块再按原工作流给 Image 做整体排布。总图侧重模块位置和跨块连接，不塞每块全部内部细节。目标图层与对象/连接范围由当前合同给；密度超过可读精度就回到分块，不整体密排。完整 CAD 任务保留先小图 CAD、再宏观组装路线，Aspen 只布局仍沿用原例外。
 
 ## 探索阶段
@@ -21,13 +23,13 @@
 
 `gaps` 必须存在，每项为 `{id, object_id, missing, retrieval_observation, exploration_boundary}`；`missing` 是 `symbol/drawing_rule` 的非空子集，记录本次实际检索未定项与探索范围。未知设备图例的合同表达为 `{kind: exploratory_symbol, gap_id: 本对象缺口ID}`。逻辑 split/mix/junction 仍为连接逻辑，包界仍须明确授权。所有对象由已采用规则的 `scope_ids` 或本对象的 `drawing_rule` 缺口覆盖。
 
-全部符号未知可 `symbols=[]` 且无 `symbol_atlas`。仍需实际 `font_reference` 图片及其 `source`，可提供有来源的 `applicable_reference` 图片。参考来源可用真实 packet 正文，或合同登记的当前项目来源存档，经 Gate1 实读；不用把私有指令写入公共库。没有已知适用画法时可 `applicability=[]`，但每个对象须登记 `drawing_rule` 缺口。已知符号不能借探索省略其完整 atlas/source。
+全部符号未知可 `symbols=[]` 且无 `symbol_atlas`，没有任何适用参考时可 `references=[]`。也可提供普通视觉参考；所有提供的图片仍核验身份/hash，`font_reference` 不强制附 source。`applicable_reference` 仍须有来源；来源可用真实 packet 正文或合同登记的当前项目存档，经 Gate1 实读，不用把私有指令写入公共库。没有已知适用画法时可 `applicability=[]`，但每个对象须登记 `drawing_rule` 缺口。已知符号不能借探索省略其完整 atlas/source。
 
-探索 Gate1 除原有合同、实际参考图和全部已知符号/规则/授权/位置项外，还须逐缺口有 `category: exploration_gap/target: 缺口ID` 记录，至少引用 `contract/receipt`，检查检索缺口和探索边界。不得继承标准修订三轮结论。
+探索 Gate1 除原有合同、全部已知符号/规则/授权/位置项外，还须逐缺口有 `category: exploration_gap/target: 缺口ID` 记录，至少引用 `contract/receipt`，检查检索缺口和探索边界。有实际参考图片时还须 `reference_images` 记录；references 为空时不制造图片或假证据。不得继承标准修订三轮结论。
 
 ## 标准修订与三轮审核
 
-`standard_revision` 必须 `gaps=[]`，恢复逐对象真实完整符号、条/表/图/页、实际 atlas/字体图和全部对象适用表达覆盖。原 PDF 有图例而检索 gap 时，先溯源补库并取得 fresh receipt，不能随填 hash 冒充规范图例链路。
+`standard_revision` 必须 `gaps=[]`，恢复逐对象真实完整符号、条/表/图/页、实际 atlas 和全部对象适用表达覆盖，实际首图仍必须传入，字体参考不是门槛。原 PDF 有图例而检索 gap 时，先溯源补库并取得 fresh receipt，不能随填 hash 冒充规范图例链路。
 
 新增 `revision: {first_image: {path, sha256}, correction_input: {path, sha256}}`。`first_image` 是首图实际文件，还须以 `role: first_image` 的同一文件放入 `references`，实际传给 Image。`correction_input` 是受审修正说明/对象映射/更正输入的 UTF-8 文件，其**全文纳入实际 prompt**，作为已审核更正要求，服从当前语义合同和已采用标准/完整图例，不是只绑定 hash。
 
@@ -58,10 +60,10 @@ python prepare_image_request.py spec.json --review-material --output review-mate
 python prepare_image_request.py spec.json --output prepared-image-request.json --diagnostic failure.json
 ```
 
-待审材料 `non_request=true`，含精确 prompt 和绑定，不含 imagegen_arguments；Gate1 未生成时可先出材料，其余阶段输入须齐。三轮在 Gate1 内绑定当前材料摘要，最终 Gate1 hash 单独绑定以免循环。调用前用 `verify_prepared_request` 重查后原样传入返回参数。失败不写请求，可写新诊断，已有输出不覆盖。prompt 保留语义、图册定位、规则、缺口/更正要求，审计路径/hash 留 bindings。
+待审材料 `non_request=true`，含精确 prompt 和绑定，不含 imagegen_arguments；Gate1 未生成时可先出材料，其余阶段输入须齐。三轮在 Gate1 内绑定当前材料摘要，最终 Gate1 hash 单独绑定以免循环。调用前用 `verify_prepared_request` 重查后原样传入返回参数。无参考图的探索请求**省略** `referenced_image_paths` 字段，不传空数组充当编辑，不伪造参考图；有实际参考时按已核图片顺序传入。失败不写请求，可写新诊断，已有输出不覆盖。prompt 保留语义、图册定位、规则、缺口/更正要求，审计路径/hash 留 bindings。
 
 `example.synthetic.json` 仅为有占位 hash 的字段示例，不是工程证据或可执行 packet。
 
-**本轮依用户要求没有运行测试或启动任何绘图/模拟应用。此前48项测试只验证旧候选，与旧入口另行归档，不作为新阶段当前可运行测试入口；不能算新阶段策略已测，也不能用旧结果宣称当前版本通过。** 原测试使用合成 packet/1×1 PNG/来源，执行真实 check_receipt，仅隔离大型索引健康检查，不等于真实 RAG 查询。
+**本轮字体/标注澄清仅作文本审阅，依用户要求没有运行测试、验证脚本或启动任何绘图/模拟应用。此前48项测试只验证旧候选，与旧入口另行归档，不作为新阶段当前可运行测试入口；不能算新阶段及本次澄清已测，也不能用旧结果宣称当前版本通过。** 原测试使用合成 packet/1×1 PNG/来源，执行真实 check_receipt，仅隔离大型索引健康检查，不等于真实 RAG 查询。
 
 本入口不拦直接工具调用，不证明人工实读、人员独立、来源语义真实、工程对象完整或标准合规。探索通过不继承到标准阶段，三轮通过不证明未来二次图像符合；图后修改复核和 CAD 回读不能省略。

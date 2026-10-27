@@ -124,14 +124,16 @@ def body_anchor(node):
 def render_prompt(contract, references, symbols, applicability, constraints, stage, gaps, correction_text=None):
     """One deterministic template; positions are free unless separately source-authorized."""
     semantic = {k: v for k, v in contract.items() if k != "source_records"}
-    visual_refs = [{"id": row["id"], "role": row["role"], "attached_image_index_1based": i + 1}
+    visual_refs = [{"id": row["id"], "role": "optional_visual_reference" if row["role"] == "font_reference" else row["role"],
+                    "attached_image_index_1based": i + 1}
                    for i, row in enumerate(references)]
     visual_symbols = [{k: row[k] for k in ("id", "reference_id", "atlas_locator", "symbol_system")} for row in symbols]
     adopted = [{k: row[k] for k in ("id", "industry", "drawing_rule", "application", "check", "scope_ids")} for row in applicability]
     spatial = [{k: row[k] for k in ("id", "scope_ids", "relation")} for row in constraints]
     return "\n".join([
         "Create a review image for drawing_use=" + contract["drawing_use"] + "; stage=" + stage + ".",
-        "Use the semantic contract below: preserve every object ID, directed connection, and exact label.",
+        "Use the semantic contract for object identities and directed connections. Reserve adequate annotation space and keep object IDs distinguishable. "
+        "Exact labels and numeric data remain authoritative for downstream native CAD/Aspen text placement and readback.",
         "The current contract defines the target drawing layer and object/connection scope; do not expand it into all process detail. "
         "For a large flow, use the existing block-generation and overall-layout workflow: understand process and module coupling, "
         "define functional blocks, then complete each block's exploration, three standard-correction reviews, regeneration and actual image correction/recheck. "
@@ -147,7 +149,7 @@ def render_prompt(contract, references, symbols, applicability, constraints, sta
         "Apply only the separately reviewed local spatial constraints below. Geometry constraints remain active:",
         "avoid overlaps and label collisions; preserve whitespace and readable connections; respect symbol interface directions.",
         "Logical split/mix/junction objects are connection logic, never standalone physical equipment.",
-        "For all known symbols, use the reviewed complete atlas symbols and the attached font references.",
+        "For all known symbols, use the reviewed complete atlas symbols.",
         "Rectangular equipment symbols are allowed when supported by their reviewed source. No generic shape fallback.",
         ("This first image is candidate_unstandardized. For objects explicitly listed in EXPLORATION_GAPS, explore a plausible visual expression. "
          "Do not default to meaningless functional boxes; do not invent process objects, connections, exact data, source legends or compliance claims. "
@@ -293,12 +295,9 @@ def build_material(spec_path, engine=DEFAULT_ENGINE):
                              if row["source"].get("locator", {}).get("kind") == "project_record" else
                              checked_native(row["source"], list(objects))
                              if row["source"].get("locator", {}).get("kind") == "native_case" else checked_source(row["source"]))
-        require(not (stage == "exploration" and row["role"] == "font_reference") or "source" in row,
-                "EXPLORATION_FONT_SOURCE_REQUIRED")
         require(row["role"] != "applicable_reference" or "source" in row, "APPLICABLE_REFERENCE_SOURCE_REQUIRED")
         references.append(dict(row, file=ref))
     roles = {row["role"] for row in references}
-    require("font_reference" in roles, "FONT_IMAGE_REQUIRED")
     require((not spec["symbols"] and stage == "exploration") or "symbol_atlas" in roles, "KNOWN_SYMBOL_ATLAS_REQUIRED")
     require(stage == "standard_revision" or "first_image" not in roles, "FIRST_IMAGE_ONLY_FOR_STANDARD_REVISION")
     resources = {"contract": contract_ref, "receipt": receipt_ref}
@@ -443,7 +442,9 @@ def prepare(spec_path, engine=DEFAULT_ENGINE):
     exact(review, {"schema", "reviewer", "scope", "material_sha256", "records"}, {"standard_review_rounds"})
     require(review["schema"] == "image-gate1-review/v1" and nonblank(review["reviewer"]), "INDEPENDENT_GATE1_REVIEW_REQUIRED")
     require(review["scope"] == material["scope"] and review["material_sha256"] == material["material_sha256"], "GATE1_BINDING_MISMATCH")
-    needed = {("semantic_contract", "contract"), ("reference_images", "references")}
+    needed = {("semantic_contract", "contract")}
+    if material["reference_image_order"]:
+        needed.add(("reference_images", "references"))
     needed |= {("symbol_selection", x) for x in material["scope"]["symbol_ids"]}
     needed |= {("industry_applicability", x) for x in material["scope"]["applicability_ids"]}
     needed |= {("package_authorization", x) for x in material["scope"]["authorization_ids"]}
@@ -504,12 +505,14 @@ def prepare(spec_path, engine=DEFAULT_ENGINE):
             require(nonblank(row["application_note"]), "APPLICATION_TO_REVIEWED_CORRECTION_INPUT_REQUIRED")
             check_records(row["records"], {key for key in needed if key[0] in categories})
     refs = [material["resources"]["reference:" + x]["path"] for x in material["reference_image_order"]]
+    imagegen_arguments = {"prompt": material["prompt_preview"], "transparent_background": False}
+    if refs:
+        imagegen_arguments["referenced_image_paths"] = refs
     return {"schema": "prepared-image-request/v1", "stage": spec["stage"], "drawing_use": spec["drawing_use"],
             "status": "candidate_unstandardized" if spec["stage"] == "exploration" else "reviewed_revision_request",
             "cad_allowed": False, "delivery_allowed": False,
-            "post_generation_requirement": "Inspect the actual generated image, correct it against applicable standards/source legends, and recheck. Hard errors require further correction or regeneration before any downstream CAD/layout handoff.",
-            "imagegen_arguments": {"prompt": material["prompt_preview"], "referenced_image_paths": refs,
-                                   "transparent_background": False},
+            "post_generation_requirement": "Inspect the actual generated image, correct it against applicable standards/source legends, and recheck. Hard errors require further correction or regeneration before any downstream CAD/layout handoff. Verify actual fonts, glyphs and authoritative label text after native CAD/Aspen text placement and readback; Image layout is not the typography acceptance output.",
+            "imagegen_arguments": imagegen_arguments,
             "bindings": {"material": material, "gate1": gate_ref},
             "reuse_rule": "Pass imagegen_arguments unchanged. Recheck all hashes immediately before calling; any change requires a new Gate1 review.",
             "boundary": "Review handoff only. Does not intercept direct tool calls, prove human reading, verify source truth, or certify compliance."}

@@ -44,7 +44,7 @@ flowchart TD
 
 Aspen只需要PFD排布时，可用[Image布局前段](skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md)：完成检索、内容审核、Image生成与看图反馈后返回图块及跨块接口，不进入CAD重建。Aspen实施及其文件验收仍由调用方负责，公开包不包含通用Aspen坐标实施器。
 
-生成使用 [分阶段输入合同](skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md) 与 [请求准备器](skills/chemical-pfd-pid-cad/tools/image-handoff/README.md)：先理解与检索，未知图例允许探索首图；按标准修正并三轮独立审核后，二次生成再看再改。复杂流程复用小块生成、合格小图总排布，严禁蛇形塞满单框。当前阶段修订按用户要求未测试，旧入口的测试不继承。
+生成使用 [分阶段输入合同](skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md) 与 [请求准备器](skills/chemical-pfd-pid-cad/tools/image-handoff/README.md)：先理解与检索，未知图例允许探索首图；按标准修正并三轮独立审核后，二次生成再看再改。复杂流程复用小块生成、合格小图总排布，严禁蛇形塞满单框。字体不作为Image门槛；实际落字前必须看同用途案例并核源样式，标签放置用自然语言说明，准确内容由CAD/Aspen写入。当前阶段修订按用户要求未测试，旧入口的测试不继承。
 
 ## 各部分做什么
 
