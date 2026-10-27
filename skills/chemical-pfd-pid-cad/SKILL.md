@@ -7,7 +7,7 @@ metadata:
 
 # 化工绘图总控
 
-新图、整体重排及 Aspen 前段调用先执行 [Image 分阶段输入合同](references/IMAGE_INPUT_CONTRACT.md)：理解流程后按需功能分块，已知图例完整采用，未知模块登记后由 Image 探索；按标准修正并三轮独立审核后，二次生成再核改。合格小块再交 Image 做总排布，严禁为塞满单框而蛇形密排。使用 `tools/image-handoff/prepare_image_request.py` 区分探索与标准修订请求；图后通过前不能进入 CAD 或交付。
+新图、整体重排及 Aspen 前段调用先执行 [Image 分阶段输入合同](references/IMAGE_INPUT_CONTRACT.md)：理解流程后按需功能分块，已知图例完整采用，未知模块登记后由 Image 探索；按标准修正并三轮独立审核后，二次生成再核改。合格小块再交 Image 做总排布，严禁为塞满单框而蛇形密排。使用 `tools/image-handoff/prepare_image_request.py` 区分探索与标准修订请求；图后通过前不能进入 CAD 或交付。 完整CAD任务须先在小图写入并核实准确旗标、数据和管道标注，再总排布；之后仍按[信息插入与完整验收](references/IMAGE_INPUT_CONTRACT.md#信息插入先定字段image留位小图准确写入)核标准、语义、数据、几何、字体及原生出图，衔接检查不是终点。
 
 ## 最高准则：文献压力基准
 
