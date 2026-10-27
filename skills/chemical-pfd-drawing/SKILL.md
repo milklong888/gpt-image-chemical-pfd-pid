@@ -7,7 +7,7 @@ description: 按项目依据绘制、规划或修复PFD，表达设备、物料�
 
 工程PFD/PID的视觉素材执行[国赛图例优先与塔画法](../chemical-pfd-pid-cad/references/COMPETITION_LEGENDS_AND_TOWERS.md)：适用国赛完整图例第一优先，并实际附给Image；标准效力另核。遇塔必查塔型、内件及本案逐口连接，不能套通用塔形。
 
-生成相关任务统一进入 [Image 分阶段输入合同](../chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md)：先检索，未知图例登记后可探索首图；标准修正经三轮独立审核，再二次生成并实际核改。复杂流程复用功能分块和合格小图总排布，严禁蛇形塞图。只做知识维护时不自动生图。
+生成相关任务统一进入[Image与CAD阶段合同](../chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md)：按需确认车间，前置检索应画要素及标准，实际附国赛整图/局部/完整图例；正常流程首图后先准确CAD落图和国赛比对，车间内切块则先真实合并，三轮审核后才二次Image优化排线布局，再用冻结图例/数据重画CAD。单车间可清楚表达就不拆，禁止蛇形塞图。Aspen只布局仍前段返回；只做知识维护不自动生图。
 
 新绘或补全流股信息时，先读[流股落图与管道表达](../chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md)：流股号/方向实际标在线上，T/P/F落实为线旁标注、图内表或成套续表页；重点条件仍在主图，不能只交外部表。Image前冻结准确字段和归属；分别安排流股编号标记、F/T/P参数标记和跨图接续符。Image仅定布局，准确旗形/文字/引线在CAD实际落实，最终按实体、重开回读和打印结果对账。
 
@@ -15,7 +15,7 @@ description: 按项目依据绘制、规划或修复PFD，表达设备、物料�
 
 读取[信息与控制](../chemical-pfd-pid-cad/references/DRAWING_AND_CONTROL.md)：设备、物料与能量流向、特征操作条件、同号流股表按项目范围表达。T/P/F、组成/相态及基准须来自同案同工况，详细管道/阀件/信号归PID。R原文、D推导、S授权训练、缺项分列；没有数据不能伪造工程值。
 
-先按[策划检索](../chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md)追原页、图例和实际接口；再将完整适用图例与内容合同交给GPT-image。输出终点、跨图去向和回流须明确；图像文字/箭头不能掩盖断口。整图精度不足按[分块流程](../chemical-pfd-pid-cad/references/LARGE_FLOW_LAYOUT.md)处理：完整交付先完成并复核小图CAD的图例、连接及三类标记，再生成不超过一个有来源车间的宏观Image；车间拼接和原生交付另行实检。工段不能自动视为车间。
+先按[策划检索](../chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md)追原页、图例和实际接口；再将完整适用图例与内容合同交给GPT-image。输出终点、跨图去向和回流须明确；图像文字/箭头不能掩盖断口。整图精度不足按[分块流程](../chemical-pfd-pid-cad/references/LARGE_FLOW_LAYOUT.md)处理：完整交付先正常生成本范围首图、准确CAD落图并比对国赛，确有分块才先真实CAD合并；三轮审核首版完整CAD后再二次Image只优化布局，用原图元与冻结资料重画CAD并终验。工段不能自动视为车间。
 
 按[实际验收](../chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md)核真实端点、法向、全线、短接管等宽、重叠、图表对应及原生文件。保持来源色号/字形；真实不可读才修正。公开检查器不等于任意拓扑自动绘图器。
 

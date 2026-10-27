@@ -1,71 +1,67 @@
-# Image 分阶段交接
+# Image 交接 v2：首图与 CAD 后布局优化
 
-本脚本无新增第三方依赖，但会调用既有知识工具；须按知识工具 README 配好原有运行环境。复用同一 `tools` 下的本地 `drawing-knowledge/retrieval_gate.py` 或公开版 `drawing-knowledge/engine/retrieval_gate.py`；缺少同包入口时明确失败，不暗中加载另一套用户私库。不启动 Image、CAD、Aspen，不重建索引，也不新建 RAG。
+本脚本无新增第三方依赖，但调用既有知识工具，须按知识工具 README 配好运行环境。复用同包 `drawing-knowledge/retrieval_gate.py` 或公开结构 `drawing-knowledge/engine/retrieval_gate.py`；缺少入口明确失败，不借另一用户私库。不启动 Image/CAD/Aspen，不自动分块、合并或重画，也不新建检索框架。
 
-工程图例按[国赛优先与塔画法](../../references/COMPETITION_LEGENDS_AND_TOWERS.md)选择。用现有 `symbol_atlas/reference_id/atlas_locator` 实际传图，在 Gate1 的符号与图片记录中核选择或回退依据；塔的原件、接口与标准应用逐项检查。准备器不自动认证赛事身份或标准符合。
+## 模式和阶段
 
-## 两个明确阶段
+`schema` 必须 `image-handoff/v2`，`workflow_mode` 必填 `full_cad/image_layout_only`，`stage` 必填 `exploration/cad_layout_refinement`。旧 `standard_revision` 明确拒绝，不能沿用旧“首图三轮后立即二次生成”的顺序。`drawing_use` 仍为 `engineering_pfd/engineering_pid/aspen_native_layout`。
 
-`spec.stage` 必填，只能是 `exploration/standard_revision`；缺省拒绝，不默默落到旧严格模式。`drawing_use` 仍必填 `engineering_pfd/engineering_pid/aspen_native_layout`，不因图例未知改成 BFD。
-
-| 阶段 | 本次可生成内容 | 请求状态 |
+| 模式/阶段 | 作用 | 输出状态 |
 |---|---|---|
-| `exploration` | 首次探索图；固定已知拓扑、准确标签和已有数据，未知图例/画法逐对象登记 | `candidate_unstandardized` |
-| `standard_revision` | 对首图实际问题、标准替换方案和同版输入完成三轮独立审核后，允许二次生成 | `reviewed_revision_request` |
+| 任一模式 `exploration` | 正常化工流程首图；逐对象记录未知图例/画法 | `candidate_unstandardized` |
+| 仅 full_cad 的 `cad_layout_refinement` | 实际首版 CAD 审核三轮后，将 CAD 预览交 Image，只优化布局 | `reviewed_cad_layout_refinement_request` |
 
-两阶段请求均为 `cad_allowed=false/delivery_allowed=false`。探索通过不能继承为标准阶段通过；三轮只准二次生成，不声称首图已改好或尚未生成的二次图已符合国标。二次图须实际看过、按适用标准和完整图例修改复核；有硬错继续改/再生成，之后才可按下游门返回已核布局或进入 CAD。原生 CAD 接口/端口/回读另审。
+请求均 `cad_allowed=false/delivery_allowed=false`，不自动授权 CAD 操作或通过验收。`image_layout_only`（包括 Aspen 只布局）在前段核改后返回，不为满足后阶段而新建 CAD；没有实际 CAD 不能声称完成 CAD 后二次优化。
 
-Image 两阶段都不要求字体参考，不以 Image 验收字体、字形或准确造字；只要求标注空间和可辨对象 ID。准确标签及数值仍保留在语义合同中，实际字体可用性、字形、准确落字与缺字/乱码由 CAD/Aspen 落字后的原生输出及回读负责。可选 `font_reference` 仅作普通视觉参考，核验其图片身份/hash，不变成 Image 字体门槛。
+## 当前完整顺序
 
-大流程沿用原 [分块生成与总排布工作流](../../references/LARGE_FLOW_LAYOUT.md) 和 [Image 输入合同](../../references/IMAGE_INPUT_CONTRACT.md)，不新造分块算法或全局 schema；本入口不自动分块、拼接或完成总图装配。先理解工艺和模块耦合、划定功能块；每块按“探索→标准修正三轮→二次生成→实际图后核改”完成，合格小块再按原工作流给 Image 做整体排布。总图侧重模块位置和跨块连接，不塞每块全部内部细节。目标图层与对象/连接范围由当前合同给；密度超过可读精度就回到分块，不整体密排。完整 CAD 任务保留先小图 CAD、再宏观组装路线，Aspen 只布局仍沿用原例外。
+1. 检索要素标准，选用适用的国赛整图/局部/完整图例并实际传图。遵循[国赛图例与塔画法](../../references/COMPETITION_LEGENDS_AND_TOWERS.md)逐图种判断适用/回退，不把无关参考冒充国赛，不强迫每种图都有国赛出处。
+2. 按需确认车间边界；已有明确单元范围不强造车间，多车间按车间逐一推进。正常完整流程首图优先，清楚就不切；策划已能确定或实际反馈显示密度/精度不足，才车间内功能切块，沿用[大流程规则](../../references/LARGE_FLOW_LAYOUT.md)与[输入合同](../../references/IMAGE_INPUT_CONTRACT.md)。未知图例可探索，但不得默认无意义方框、增造流程/数据或伪称原图例。
+3. 按标准修正首图，再转首版 CAD，准确信息和字体在原生 CAD 落图。探索假设未修正前不能直接作正式 CAD 源图例。
+4. 如车间内实际切块，先真实 CAD 合并并核跨块每股连接、接口；没切块则记录真实整图范围及逐股检查，不能伪造合并。
+5. 对这份实际 CAD 作三轮标准、国赛风格/图例和完整性审核，绑定同版 CAD/预览/检查记录/布局输入。
+6. 把审核过的 CAD 预览交 Image 二次优化排线布局；只采纳位置、走线、留白，不采纳图例、字、数据或拓扑变化。
+7. 据冻结合同和原图元 CAD 重画，并完成终验。Image 结果不是新工程依据，也不代替原生字体/连接/数据验收。
 
-## 探索阶段
+不增加自动全局拼接 schema。两阶段共同严禁蛇形塞图：不能逐排往返、多层长线横贯、设备/标注密排来塞单框。空间不足扩大画布或回到必要分块，不缩字挤间距；保留真实工艺回流。
 
-仍须真实检索、取得当前 packet 并通过原 `check_receipt`。图例未知不授权新增设备、流程、连接、数值或虚构来源。已知完整符号仍照用，不按矩形外观禁用真正矩形设备；未知项允许 Image 探索合理表达，不能默认用无意义功能方框，不能称作已核原图例。
+## 首图与来源规则
 
-`gaps` 必须存在，每项为 `{id, object_id, missing, retrieval_observation, exploration_boundary}`；`missing` 是 `symbol/drawing_rule` 的非空子集，记录本次实际检索未定项与探索范围。未知设备图例的合同表达为 `{kind: exploratory_symbol, gap_id: 本对象缺口ID}`。逻辑 split/mix/junction 仍为连接逻辑，包界仍须明确授权。所有对象由已采用规则的 `scope_ids` 或本对象的 `drawing_rule` 缺口覆盖。
+探索仍须真实检索 receipt，经既有 `check_receipt`。`gaps` 项为 `{id, object_id, missing, retrieval_observation, exploration_boundary}`，missing 为 symbol/drawing_rule 非空子集。未知设备图例用 `{kind: exploratory_symbol, gap_id}` 绑定本对象缺口；已知完整图例仍必须附 symbol_atlas。所有对象由已有适用规则或自身 drawing_rule 缺口覆盖。逻辑 split/mix/junction 只用 logical_node，不能伪装设备；包界 functional_block 仍须明确授权。
 
-全部符号未知可 `symbols=[]` 且无 `symbol_atlas`，没有任何适用参考时可 `references=[]`。也可提供普通视觉参考；所有提供的图片仍核验身份/hash，`font_reference` 不强制附 source。`applicable_reference` 仍须有来源；来源可用真实 packet 正文或合同登记的当前项目存档，经 Gate1 实读，不用把私有指令写入公共库。没有已知适用画法时可 `applicability=[]`，但每个对象须登记 `drawing_rule` 缺口。已知符号不能借探索省略其完整 atlas/source。
+全部设备图例未知可 symbols=[]；仍须查找并实际附上可用的国赛整图/局部风格参考。只有确实没有适用参考且记录检索缺口时才可 references=[]，无图时请求省略 referenced_image_paths，不传空数组或假图。字体参考可选，Image 只需标注空间与可辨 ID；准确字体、字形、文字和数值由 CAD/Aspen 原生落字和回读验收。提供的可选图片仍核身份/hash，不据此验 Image 字体。applicable_reference 须有来源，可为适用国赛整图/局部等，国赛身份和回退由独立审核实读，不靠命名猜测。
 
-探索 Gate1 除原有合同、全部已知符号/规则/授权/位置项外，还须逐缺口有 `category: exploration_gap/target: 缺口ID` 记录，至少引用 `contract/receipt`，检查检索缺口和探索边界。有实际参考图片时还须 `reference_images` 记录；references 为空时不制造图片或假证据。不得继承标准修订三轮结论。
+工程图例和规范来源保留 `{path,sha256,locator,receipt_evidence_ids}`；locator 为 clause/table/page/figure 并绑定 packet 正文原页或 native_handles。仅来源登记/版本元数据不算正文。ClauseCandidate/CasePattern/Requirement/SymbolRepresentation 要有正文及页/句柄；Source 仅允许 page: 原页锚点。路径/hash/范围机械核验，具体条/图语义由 Gate1 核读。
 
-## 标准修订与三轮审核
+当前用户/项目批准仍可在合同 source_records 登记指令存档/hash，授权/位置可 project_record 引用，不强迫私有指令入公共库；工程符号/规范不能伪装项目记录绕过。Aspen 原图标可用 current_case_native_reference，绑定可读图册、case_ref、source_id 和对象范围，经 Gate1 对实际同案源核读；不声称国标。
 
-`standard_revision` 必须 `gaps=[]`，恢复逐对象真实完整符号、条/表/图/页、实际 atlas 和全部对象适用表达覆盖，实际首图仍必须传入，字体参考不是门槛。原 PDF 有图例而检索 gap 时，先溯源补库并取得 fresh receipt，不能随填 hash 冒充规范图例链路。
+## CAD 后二次请求
 
-新增 `revision: {first_image: {path, sha256}, correction_input: {path, sha256}}`。`first_image` 是首图实际文件，还须以 `role: first_image` 的同一文件放入 `references`，实际传给 Image。`correction_input` 是受审修正说明/对象映射/更正输入的 UTF-8 文件，其**全文纳入实际 prompt**，作为已审核更正要求，服从当前语义合同和已采用标准/完整图例，不是只绑定 hash。
+`cad_layout_refinement` 仅 full_cad，gaps 必须空，逐对象完整真实符号、原页条款/图例、适用范围、逻辑节点等旧要求保持。revision 固定为：
 
-三轮复用 Gate1 的 `standard_review_rounds`，不用另建台账，按顺序为：
-
-1. `basis_and_symbols`：依据、图例和包界；records 覆盖全部 `symbol_selection/industry_applicability/package_authorization`。
-2. `connections_and_annotation_application`：连接、准确标注与规则应用；覆盖 `semantic_contract/industry_applicability/spatial_constraint`。
-3. `revised_input_and_omissions`：首图实际问题和同版修正输入的整图、漏项审核；覆盖全部 Gate1 项。
-
-每轮有不同 `reviewer`、同一 `scope/material_sha256`、同一 `first_image_sha256/correction_input_sha256`、引用 `contract/revision:first_image/revision:correction_input` 的 `evidence_refs`、非空 `application_note`，以及既有格式的有依据 `records`。应用说明确认更正如何落实到**受审输入**，不能把计划称成首图已改好。任一输入版本变化都按新摘要重审；实际人员/代理独立性和实读由工作流负责。
-
-## 来源、表达与布局
-
-普通引用 `{path, sha256}`。工程图例/规范来源增加 `locator: {kind, value, physical_pages}` 和 `receipt_evidence_ids`，kind 为 `clause/table/page/figure`。原生 CAD 可用 `native_handles`。页/句柄须属真实 packet 返回/固定上下文的对应正文节点，匹配 `source_path/source_sha256`。正文及页/句柄支持 `ClauseCandidate/CasePattern/Requirement/SymbolRepresentation`；Source 只允许有物理页的 `page:` 锚点，来源登记和版本元数据不能代替正文。具体图号/条文语义由 Gate1 对绑定原页核读。
-
-合同可选 `source_records: [{id, record_kind, file, scope_ids}]`，record_kind 为 `user_instruction/project_approval`。包界授权、用户位置要求和参考来源可用 `locator: {kind: project_record, value: 记录ID}` 引用当前已读来源文件，不填 receipt IDs。规范依据仍走 packet；工程符号/行业规则不能伪装项目记录绕过。
-
-仅 Aspen 模式可用 `current_case_native_reference` 记录，另含 `source_id/case_ref`，file 为同案原图标截图，case_ref 绑定当前 BKP/冻结上游 case 的 hash。符号/表达以 `locator.kind=native_case` 引用；atlas 须同一实际截图，Gate1 相应项还引 `project_record:记录ID/native_case:记录ID`。不写公共库、不声称国标，原生截图不能充当包界授权。
-
-设备用 `equipment_symbol`（Aspen 用 `aspen_native_icon`），逻辑节点只用 `logical_node`，包界 `functional_block` 须完整符号及逐对象授权，native_block 仅 Aspen；探索只增加上文明确的 exploratory_symbol 分支。位置默认自由；其它位置锁定须有用户/适用条文依据和独立审核，不用方向词正则。避碰、留白、可读连线、接口方向仍保留。主图可留数据区容量，不强塞每行全部精确数值。
-
-**两阶段共同严禁蛇形塞图**：不得为把全流程塞满单框而逐排往返、多层长线横贯、设备/标注密排（serpentine/boustrophedon packing）。空间不足应增大画布或清晰分块，不能缩字或压缩间距；主流向清晰、设备周围留白。这是当前用户明确硬约束，无需逐案例另行审批或 RAG；有据位置约束也不能放行这种塞图。该限制不删除工艺真实回流，合同中的真实有向回路必须保留。
-
-## 文件交接与验证范围
-
-```powershell
-python prepare_image_request.py spec.json --review-material --output review-material.json
-python prepare_image_request.py spec.json --output prepared-image-request.json --diagnostic failure.json
+```json
+{
+  "cad_file": {"path": "reviewed-first-cad.dwg", "sha256": "..."},
+  "cad_preview": {"path": "same-cad-preview.png", "sha256": "..."},
+  "assembly_evidence": {"path": "actual-scope-assembly-stream-checks.txt", "sha256": "..."},
+  "correction_input": {"path": "layout-only-input.txt", "sha256": "..."}
+}
 ```
 
-待审材料 `non_request=true`，含精确 prompt 和绑定，不含 imagegen_arguments；Gate1 未生成时可先出材料，其余阶段输入须齐。三轮在 Gate1 内绑定当前材料摘要，最终 Gate1 hash 单独绑定以免循环。调用前用 `verify_prepared_request` 重查后原样传入返回参数。无参考图的探索请求**省略** `referenced_image_paths` 字段，不传空数组充当编辑，不伪造参考图；有实际参考时按已核图片顺序传入。失败不写请求，可写新诊断，已有输出不覆盖。prompt 保留语义、图册定位、规则、缺口/更正要求，审计路径/hash 留 bindings。
+CAD 文件必须存在、非空并以 dwg/dxf 为后缀；这不验证其真实文件格式或原生可读性。预览必须是实际图片，且同一文件以 references.role=cad_baseline 真正传给 Image，已知 atlas 也仍附图。assembly_evidence 是 UTF-8 实际范围、真实合并（或未切块说明）、逐股/接口检查及检查来源说明，不能用单个 true 自证。程序只检查文件存在/hash及非空文本，不解析 DWG 或自动证明合并/检查真实；独立审核必须实际读 CAD、预览与记录，发现空泛声明不批准。correction_input 的非空 UTF-8 全文实际送入 prompt，只能给布局改进要求，不能授权工程内容变化。
 
-`example.synthetic.json` 仅为有占位 hash 的字段示例，不是工程证据或可执行 packet。
+Gate1 schema 为 image-gate1-review/v2。保留原有 scope/material_sha256 与 records，增加 `category: cad_baseline,target: cad_baseline`，evidence_refs 至少含 contract 与 revision:cad_file/cad_preview/assembly_evidence/correction_input。standard_review_rounds 为三份独立 reviewer 的同版记录：
 
-**本轮字体/标注澄清仅作文本审阅，依用户要求没有运行测试、验证脚本或启动任何绘图/模拟应用。此前48项测试只验证旧候选，与旧入口另行归档，不作为新阶段当前可运行测试入口；不能算新阶段及本次澄清已测，也不能用旧结果宣称当前版本通过。** 原测试使用合成 packet/1×1 PNG/来源，执行真实 check_receipt，仅隔离大型索引健康检查，不等于真实 RAG 查询。
+1. standards_and_symbols：标准与完整符号/授权，含 cad_baseline。
+2. competition_style_and_legend_application：适用国赛风格/图例、标准优先、连接与标注应用，含 cad_baseline、参考图、符号/适用/位置/合同项。没有适用国赛例时实际记录回退，不能强行认定赛事来源。
+3. cad_completeness_and_interfaces：CAD 整图完整性、遗漏及真实合并/逐股接口，覆盖全部 Gate1 项。
 
-本入口不拦直接工具调用，不证明人工实读、人员独立、来源语义真实、工程对象完整或标准合规。探索通过不继承到标准阶段，三轮通过不证明未来二次图像符合；图后修改复核和 CAD 回读不能省略。
+每轮绑定 scope/material_sha256 与 cad_file_sha256/cad_preview_sha256/assembly_evidence_sha256/correction_input_sha256，evidence_refs 含四文件和合同，有 application_note 说明实际 CAD 审核结论，records 使用原有带证据/观察/approved 格式。文件或 prompt/合同改变就重审，不继承首图通过。独立性/实读由工作流保证，程序不验证人员身份。
+
+第二阶段 prompt 明确 LAYOUT ONLY，以审核过的 CAD 预览作基底。完整设备图例定义、标准、字体、字、数值和拓扑冻结；仅准已核位置变换及连接管线路径调整，不改变原符号内部几何；国赛案例仅风格，不能导入设备/控制/数据。只准位置/走线/留白的结果进入后续原图元重画与终验。
+
+## 文件交接与未测边界
+
+仍可用 --review-material 生成 non_request 材料供审核，再准备请求；实际调用前 verify_prepared_request 重查，并原样使用参数。材料和请求 schema 分别 image-review-material/v2 与 prepared-image-request/v2。既有输出不覆盖；失败不写请求，可写新诊断。图/来源/合同/receipt/工具自身/实际 CAD 证据/审阅与 prompt 都保留摘要绑定。
+
+本次只作文本修订，按用户要求未运行测试、验证器、Image/CAD/Aspen。旧48项仅旧候选，不证明本 v2 可运行或新顺序已测。example.synthetic.json 是带占位 hash 的格式说明，不是实际工程证据。工具不拦直接绕过，不证明来源语义、实读、独立性、工程完整或合规；请求通过不等于最终 CAD 验收。

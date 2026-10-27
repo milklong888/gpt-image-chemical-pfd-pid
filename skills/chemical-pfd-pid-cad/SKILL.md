@@ -2,12 +2,12 @@
 name: chemical-pfd-pid-cad
 description: 绘制、修复或审查化工PFD、PID与设备条件图；先检索标准、案例与完整原图例，再以GPT-image布局、真实端口接线和实际CAD回读交付。不是工艺或制造设计计算器。
 metadata:
-  workflow-version: "4.21-public-0.1.6"
+  workflow-version: "4.22-public-0.1.7"
 ---
 
 # 化工绘图总控
 
-新图、整体重排及 Aspen 前段调用先执行 [Image 分阶段输入合同](references/IMAGE_INPUT_CONTRACT.md)：理解流程后按需功能分块，已知图例完整采用，未知模块登记后由 Image 探索；按标准修正并三轮独立审核后，二次生成再核改。合格小块再交 Image 做总排布，严禁为塞满单框而蛇形密排。使用 `tools/image-handoff/prepare_image_request.py` 区分探索与标准修订请求；图后通过前不能进入 CAD 或交付。 完整CAD任务须先在小图写入并核实准确旗标、数据和管道标注，再总排布；之后仍按[信息插入与完整验收](references/IMAGE_INPUT_CONTRACT.md#信息插入先定字段image留位小图准确写入)核标准、语义、数据、几何、字体及原生出图，衔接检查不是终点。
+新图及整体重排按[Image与CAD阶段合同](references/IMAGE_INPUT_CONTRACT.md)执行：按需确认车间→检索应画要素/适用标准并实际提供国赛整图、局部及完整图例→正常流程首图→标准修正后准确转CAD并比对国赛风格/图例→车间内若切块先真实CAD合并→三轮审核→Image二次仅优化排线布局→用原图元、数据和字体重画CAD→原生终验。能清楚表达的车间不先拆块；二次图只参考位置/走线/留白，不采用它改写的符号、文字或工程内容。请求准备器区分首图探索与CAD后布局优化，不能把首图当CAD基底。Aspen仅前段的范围例外见合同。
 
 字体与标签按[看案例再落字](references/IMAGE_INPUT_CONTRACT.md#字体与标签先实际看案例再写明怎么画)执行：实际打开同用途原图局部，用自然语言说明旗形/字段排列/引线归属；Image不要求字体，真实CAD/Aspen写入时核来源字体、字高宽度对齐和原生字形入框。仅摘要或样式名不算核实。
 
@@ -25,7 +25,7 @@ Aspen等上游任务只委托PFD布局时，先读[Image布局前段](references
 2. 按[信息与控制](references/DRAWING_AND_CONTROL.md)及[流股落图与PID管道](references/STREAM_AND_PIPE_ANNOTATION.md)确定本图内容和实际标注位置；仅有图外台账不算完成。来源值、项目采用、工程批准分开；缺资料先读取溯源，有明确关系才推导，不能瞎编。
 3. 标准与实际字形先按[标准和字体](references/STANDARDS_AND_TYPOGRAPHY.md)核对。按图种选择完整原图例；机械详图不适合PFD则不选，不自行简化。 实际字框定位可按[原生文字度量工具](tools/typography/README.md)调用 `tools/typography/native_text_envelopes.py`，传当前原生文字JSON、同DWG回读DXF、句柄及明确WCS。默认保守原生包络；有限单行TopLeft/TopRight窄化需精确已审证据。不支持的段落/列/方向/格式/变换保守回退或补证，接触仍看实际PDF，不猜窄框、不放宽项目内边距；工具和合成测试不代替字体或设计验收。
 4. 执行[三道审核关口](references/INDEPENDENT_REVIEW.md)的第一关：送入ImageGen前核来源、工程语义、准确文字及提示与合同的一致性。通过后冻结本次内容；影响拓扑、控制或布局的错误先退回检索或合同修正。
-5. 新PFD/PID以GPT-image布局为核心，输入已核合同和有权使用的图例。生成后执行第二关：实际看图，反馈遗漏/增造、接管方向、跨块流股、重叠及可读性；图像不能决定新的设备、数值、控制或管口。需要整体排布的完整PFD按[小图到车间布局](references/LARGE_FLOW_LAYOUT.md)先完成小图CAD的准确图例、接管、流股编号标记、F/T/P参数标记和接续符，再做最多一个有来源车间的宏观Image排布，随后进行同车间CAD接续/拼接与原生回读。工段不自动等于车间。Aspen仅委托布局仍停在前述 `image_layout_only` 第二关，不运行CAD。PID仍须逐项核实际管道、仪表与信号，不降格为宏观排布审查。
+5. 新PFD/PID以GPT-image布局为核心，输入已核合同和有权使用的图例。生成后执行第二关：实际看图，反馈遗漏/增造、接管方向、跨块流股、重叠及可读性；图像不能决定新的设备、数值、控制或管口。完整PFD按[车间与必要分块](references/LARGE_FLOW_LAYOUT.md)正常整图优先，首图后先准确CAD及国赛风格/图例比对；车间内切块则先真实CAD接续/合并，再三轮审核后交二次Image仅优化排线布局，按原图元和冻结资料重画并原生回读。工段不自动等于车间。Aspen仅委托布局仍停在前述 `image_layout_only` 第二关，不运行CAD。PID仍须逐项核实际管道、仪表与信号，不降格为宏观排布审查。
 6. 按[几何和原生验收](references/GEOMETRY_AND_NATIVE.md)检查实际文件；硬错误阻止发布。模型自评、检索回执和哈希都不替代内容正确性。
 7. 交付前执行第三关：对最终DWG、原生回读、PDF/预览及说明进行实际验收；任一未关闭的硬错误、重要未知或必要范围未审即不放行。交付真实产物、当前证据和具体未决项。审阅稿不等于施工/制造签发。用户要PID时必须交PID页，不能用PFD控制注释代替。
 

@@ -8,7 +8,7 @@
 
 这是一个面向代理的绘图工作流与工具项目：**5 个总分 Skill、来源知识组织、图面策划提示、可执行检查和对抗验证方法**。ImageGen 是新图布局的核心；工艺数据、元件、控制关系和工程采用来自来源合同。图像不能代替设计依据。
 
-公开版 **0.1.6**，由本地工作流 **4.21** 整理。旧绘图主入口不随包发布；保留有价值、可独立维护的模块。自有代码、工作流和文档按 [MIT](LICENSE) 开源，第三方和未随包资料见 [来源与许可](THIRD_PARTY_NOTICES.md)。GPT-image 服务、模型权重、AutoCAD 和受控标准不是本项目开源的部分。
+公开版 **0.1.7**，由本地工作流 **4.22** 整理。旧绘图主入口不随包发布；保留有价值、可独立维护的模块。自有代码、工作流和文档按 [MIT](LICENSE) 开源，第三方和未随包资料见 [来源与许可](THIRD_PARTY_NOTICES.md)。GPT-image 服务、模型权重、AutoCAD 和受控标准不是本项目开源的部分。
 
 [架构](docs/ARCHITECTURE.md) · [训练与对抗验证](docs/TRAINING_AND_EVALUATION.md) · [验证范围](docs/VALIDATION_STATUS.md) · [安装与运行](docs/INSTALL.md) · [公开范围](docs/OPEN_SOURCE_SCOPE.md)
 

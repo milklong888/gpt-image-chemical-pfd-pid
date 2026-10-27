@@ -1,50 +1,52 @@
 {
   "synthetic_only": true,
-  "purpose": "Field illustration only; placeholder hashes cannot produce a request. No font reference is required for Image. Exact typography and native text are checked after CAD/Aspen text placement. Stage/font changes were not tested.",
+  "purpose": "V2 field illustration only; placeholders cannot execute. No tests or validators were run. standard_revision is retired.",
   "exploration_contract_template": {
     "schema": "drawing-semantic-contract/v1", "drawing_use": "engineering_pfd",
     "objects": [{"id": "P-1", "semantic_kind": "physical_equipment", "label_ids": ["tag"], "expression": {"kind": "exploratory_symbol", "gap_id": "gap-P1"}}],
     "connections": [], "exact_labels": [{"id": "tag", "text": "P-1 Feed pump"}]
   },
   "exploration_spec_template": {
-    "schema": "image-handoff/v1", "stage": "exploration", "drawing_use": "engineering_pfd",
-    "contract": {"path": "contract.json", "sha256": "ACTUAL_CONTRACT_SHA256"},
-    "receipt": {"path": "real-packet.json", "sha256": "ACTUAL_RECEIPT_SHA256"},
+    "schema": "image-handoff/v2", "workflow_mode": "full_cad", "stage": "exploration", "drawing_use": "engineering_pfd",
+    "contract": {"path": "confirmed-workshop-contract.json", "sha256": "CONTRACT_SHA256"},
+    "receipt": {"path": "real-packet.json", "sha256": "RECEIPT_SHA256"},
     "data_root": "CURRENT_REAL_KNOWLEDGE_DATA", "required_modules": ["common", "pump_compressor"], "topics": [],
-    "references": [],
-    "symbols": [], "applicability": [], "authorizations": [], "spatial_constraints": [],
-    "gaps": [{"id": "gap-P1", "object_id": "P-1", "missing": ["symbol", "drawing_rule"], "retrieval_observation": "Actual retrieval gap; do not infer that no source exists.", "exploration_boundary": "Explore visual expression for P-1 only; no invented topology/data, meaningless box fallback or false source-legend claim."}],
-    "gate1": {"path": "gate1.json", "sha256": "ACTUAL_GATE1_SHA256"}
+    "references": [], "symbols": [], "applicability": [], "authorizations": [], "spatial_constraints": [],
+    "gaps": [{"id": "gap-P1", "object_id": "P-1", "missing": ["symbol", "drawing_rule"], "retrieval_observation": "Actual current retrieval gap.", "exploration_boundary": "Explore P-1 visual expression only; standard-correct before formal CAD use; no invented topology/data or meaningless box fallback."}],
+    "gate1": {"path": "exploration-gate1.json", "sha256": "GATE1_SHA256"}
   },
   "exploration_gate1_template": {
-    "schema": "image-gate1-review/v1", "reviewer": "ACTUAL_REVIEWER",
-    "scope": {"stage": "exploration", "drawing_use": "engineering_pfd", "object_ids": ["P-1"], "symbol_ids": [], "gap_ids": ["gap-P1"], "authorization_ids": [], "applicability_ids": [], "spatial_constraint_ids": []},
-    "material_sha256": "CURRENT_EXPLORATION_MATERIAL_DIGEST",
+    "schema": "image-gate1-review/v2", "reviewer": "ACTUAL_REVIEWER",
+    "scope": {"workflow_mode": "full_cad", "stage": "exploration", "drawing_use": "engineering_pfd", "object_ids": ["P-1"], "symbol_ids": [], "gap_ids": ["gap-P1"], "authorization_ids": [], "applicability_ids": [], "spatial_constraint_ids": []},
+    "material_sha256": "CURRENT_MATERIAL_DIGEST",
     "records": [
-      {"category": "semantic_contract", "target": "contract", "evidence_refs": ["contract"], "observation": "Actual review of known topology, labels and data.", "decision": "approved"},
-      {"category": "exploration_gap", "target": "gap-P1", "evidence_refs": ["contract", "receipt"], "observation": "Actual review of the retrieval gap and bounded visual freedom.", "decision": "approved"}
+      {"category": "semantic_contract", "target": "contract", "evidence_refs": ["contract"], "observation": "Actual confirmed workshop scope, topology and accurate-label review.", "decision": "approved"},
+      {"category": "exploration_gap", "target": "gap-P1", "evidence_refs": ["contract", "receipt"], "observation": "Actual gap and bounded exploration review.", "decision": "approved"}
     ]
   },
-  "exploration_imagegen_arguments_shape_when_no_references": {
-    "prompt": "EXACT_REVIEWED_PROMPT_WITH_ANNOTATION_SPACE_AND_DISTINGUISHABLE_OBJECT_IDS",
-    "transparent_background": false
-  },
-  "standard_revision_changes_illustration": {
-    "note": "Illustrative changes only, not a complete second spec. Build a fresh contract/spec/material/Gate1; exploration approval does not carry over.",
-    "stage": "standard_revision", "gaps": [],
+  "cad_layout_refinement_changes_illustration": {
+    "note": "Changes only, not a complete spec. Standard-correct first image, create first CAD, place exact text/fonts; genuinely merge blocks and check every interface if splitting was needed. Review that CAD, then request layout-only second Image.",
+    "schema": "image-handoff/v2", "workflow_mode": "full_cad", "stage": "cad_layout_refinement", "gaps": [],
     "contract_object_expression_replacement": {"kind": "equipment_symbol", "symbol_id": "pump"},
-    "revision": {"first_image": {"path": "actual-first.png", "sha256": "FIRST_IMAGE_SHA256"}, "correction_input": {"path": "reviewed-corrections.txt", "sha256": "CORRECTION_INPUT_SHA256"}},
+    "revision": {
+      "cad_file": {"path": "reviewed-first-cad.dwg", "sha256": "CAD_FILE_SHA256"},
+      "cad_preview": {"path": "same-cad-preview.png", "sha256": "CAD_PREVIEW_SHA256"},
+      "assembly_evidence": {"path": "actual-scope-assembly-stream-checks.txt", "sha256": "ASSEMBLY_EVIDENCE_SHA256"},
+      "correction_input": {"path": "layout-only-input.txt", "sha256": "CORRECTION_INPUT_SHA256"}
+    },
     "references_to_add": [
-      {"id": "first", "role": "first_image", "file": {"path": "actual-first.png", "sha256": "FIRST_IMAGE_SHA256"}},
+      {"id": "cad", "role": "cad_baseline", "file": {"path": "same-cad-preview.png", "sha256": "CAD_PREVIEW_SHA256"}},
       {"id": "atlas", "role": "symbol_atlas", "file": {"path": "complete-reviewed-atlas.png", "sha256": "ATLAS_SHA256"}}
     ],
-    "symbols": [{"id": "pump", "reference_id": "atlas", "atlas_locator": "Actual complete pump symbol location", "source": {"path": "ACTUAL_RETURNED_SOURCE_PATH", "sha256": "ACTUAL_SOURCE_SHA256", "locator": {"kind": "figure", "value": "ACTUAL_FIGURE", "physical_pages": [42]}, "receipt_evidence_ids": ["ACTUAL_BODY_OR_PAGE_NODE_ID"]}, "review_state": "reviewed_complete_symbol", "symbol_system": "engineering"}],
-    "applicability": [{"id": "rule", "industry": "ACTUAL_INDUSTRY", "source": {"path": "ACTUAL_RETURNED_SOURCE_PATH", "sha256": "ACTUAL_SOURCE_SHA256", "locator": {"kind": "clause", "value": "ACTUAL_CLAUSE", "physical_pages": [42]}, "receipt_evidence_ids": ["ACTUAL_BODY_OR_PAGE_NODE_ID"]}, "drawing_rule": "Actual adopted rule.", "application": "Actual replacement and annotation-space application for P-1.", "check": "Inspect generated P-1 against the complete source symbol and distinguishable ID; verify exact text after native CAD/Aspen placement and readback.", "scope_ids": ["P-1"]}],
-    "gate1_standard_review_rounds_template": [
-      {"round": "basis_and_symbols", "reviewer": "INDEPENDENT_REVIEWER_1", "scope": "COPY_CURRENT_STANDARD_MATERIAL_SCOPE_OBJECT", "material_sha256": "CURRENT_MATERIAL_DIGEST", "first_image_sha256": "FIRST_IMAGE_SHA256", "correction_input_sha256": "CORRECTION_INPUT_SHA256", "evidence_refs": ["contract", "revision:first_image", "revision:correction_input"], "application_note": "Explain corrections applied to this reviewed input, not a claim that the first image was edited.", "records": "Use actual evidence-record objects covering symbol_selection, industry_applicability and package_authorization."},
-      {"round": "connections_and_annotation_application", "reviewer": "INDEPENDENT_REVIEWER_2", "scope": "COPY_SAME_SCOPE_OBJECT", "material_sha256": "SAME_MATERIAL_DIGEST", "first_image_sha256": "SAME_FIRST_IMAGE_SHA256", "correction_input_sha256": "SAME_CORRECTION_INPUT_SHA256", "evidence_refs": ["contract", "revision:first_image", "revision:correction_input"], "application_note": "Explain directed-connection and exact-label corrections in this input.", "records": "Cover semantic_contract, industry_applicability and spatial_constraint."},
-      {"round": "revised_input_and_omissions", "reviewer": "INDEPENDENT_REVIEWER_3", "scope": "COPY_SAME_SCOPE_OBJECT", "material_sha256": "SAME_MATERIAL_DIGEST", "first_image_sha256": "SAME_FIRST_IMAGE_SHA256", "correction_input_sha256": "SAME_CORRECTION_INPUT_SHA256", "evidence_refs": ["contract", "revision:first_image", "revision:correction_input"], "application_note": "Check actual first-image issues and this complete revised input for omissions; authorize regeneration only.", "records": "Cover every current Gate1 item, including reference_images."}
+    "symbols": [{"id": "pump", "reference_id": "atlas", "atlas_locator": "Actual complete selected source symbol", "source": {"path": "RETURNED_SOURCE_PATH", "sha256": "SOURCE_SHA256", "locator": {"kind": "figure", "value": "ACTUAL_FIGURE", "physical_pages": [42]}, "receipt_evidence_ids": ["BODY_OR_PAGE_NODE_ID"]}, "review_state": "reviewed_complete_symbol", "symbol_system": "engineering"}],
+    "applicability": [{"id": "rule", "industry": "ACTUAL_INDUSTRY", "source": {"path": "RETURNED_SOURCE_PATH", "sha256": "SOURCE_SHA256", "locator": {"kind": "clause", "value": "ACTUAL_CLAUSE", "physical_pages": [42]}, "receipt_evidence_ids": ["BODY_OR_PAGE_NODE_ID"]}, "drawing_rule": "Actual adopted standard rule.", "application": "Frozen symbol and label application in actual CAD.", "check": "Review CAD original symbols and authoritative native text; Image may only improve layout.", "scope_ids": ["P-1"]}],
+    "gate1_cad_baseline_record": {"category": "cad_baseline", "target": "cad_baseline", "evidence_refs": ["contract", "revision:cad_file", "revision:cad_preview", "revision:assembly_evidence", "revision:correction_input"], "observation": "Actual CAD/preview match; read real workshop scope, block-merge or unsplit scope record and stream/interface checks; layout input changes geometry only.", "decision": "approved"},
+    "standard_review_rounds_template": [
+      {"round": "standards_and_symbols", "reviewer": "INDEPENDENT_1", "scope": "COPY_CURRENT_V2_SCOPE_OBJECT", "material_sha256": "CURRENT_DIGEST", "cad_file_sha256": "CAD_FILE_SHA256", "cad_preview_sha256": "CAD_PREVIEW_SHA256", "assembly_evidence_sha256": "ASSEMBLY_EVIDENCE_SHA256", "correction_input_sha256": "CORRECTION_INPUT_SHA256", "evidence_refs": ["contract", "revision:cad_file", "revision:cad_preview", "revision:assembly_evidence", "revision:correction_input"], "application_note": "Actual standards and complete-symbol audit of this CAD.", "records": "Actual records covering cad_baseline, symbol_selection, industry_applicability, package_authorization."},
+      {"round": "competition_style_and_legend_application", "reviewer": "INDEPENDENT_2", "scope": "COPY_SAME_SCOPE_OBJECT", "material_sha256": "SAME_DIGEST", "cad_file_sha256": "CAD_FILE_SHA256", "cad_preview_sha256": "CAD_PREVIEW_SHA256", "assembly_evidence_sha256": "ASSEMBLY_EVIDENCE_SHA256", "correction_input_sha256": "CORRECTION_INPUT_SHA256", "evidence_refs": ["contract", "revision:cad_file", "revision:cad_preview", "revision:assembly_evidence", "revision:correction_input"], "application_note": "Actual applicable competition style/legend review or documented fallback, standard priority and CAD annotation/connection application.", "records": "Cover cad_baseline, semantic_contract, reference_images, symbol_selection, industry_applicability, spatial_constraint."},
+      {"round": "cad_completeness_and_interfaces", "reviewer": "INDEPENDENT_3", "scope": "COPY_SAME_SCOPE_OBJECT", "material_sha256": "SAME_DIGEST", "cad_file_sha256": "CAD_FILE_SHA256", "cad_preview_sha256": "CAD_PREVIEW_SHA256", "assembly_evidence_sha256": "ASSEMBLY_EVIDENCE_SHA256", "correction_input_sha256": "CORRECTION_INPUT_SHA256", "evidence_refs": ["contract", "revision:cad_file", "revision:cad_preview", "revision:assembly_evidence", "revision:correction_input"], "application_note": "Actual CAD completeness/omissions and each cross-block stream/interface checked; authorize layout-only Image request, not final delivery.", "records": "Cover all current Gate1 items."}
     ],
-    "result_state": "reviewed_revision_request; cad_allowed=false; delivery_allowed=false; actually inspect/correct the second image before downstream handoff"
-  }
+    "result_state": "reviewed_cad_layout_refinement_request; cad_allowed=false; delivery_allowed=false; adopt geometry only, redraw from frozen original entities and contract, then final native acceptance"
+  },
+  "image_layout_only_note": "Set workflow_mode=image_layout_only for front-stage layout work, including Aspen native layout; no extra CAD is created and cad_layout_refinement is unavailable."
 }
