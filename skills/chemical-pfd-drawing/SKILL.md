@@ -5,6 +5,8 @@ description: 按项目依据绘制、规划或修复PFD，表达设备、物料�
 
 # PFD专项
 
+工程PFD/PID的视觉素材执行[国赛图例优先与塔画法](../chemical-pfd-pid-cad/references/COMPETITION_LEGENDS_AND_TOWERS.md)：适用国赛完整图例第一优先，并实际附给Image；标准效力另核。遇塔必查塔型、内件及本案逐口连接，不能套通用塔形。
+
 生成相关任务统一进入 [Image 分阶段输入合同](../chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md)：先检索，未知图例登记后可探索首图；标准修正经三轮独立审核，再二次生成并实际核改。复杂流程复用功能分块和合格小图总排布，严禁蛇形塞图。只做知识维护时不自动生图。
 
 新绘或补全流股信息时，先读[流股落图与管道表达](../chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md)：流股号/方向实际标在线上，T/P/F落实为线旁标注、图内表或成套续表页；重点条件仍在主图，不能只交外部表。Image前冻结准确字段和归属；分别安排流股编号标记、F/T/P参数标记和跨图接续符。Image仅定布局，准确旗形/文字/引线在CAD实际落实，最终按实体、重开回读和打印结果对账。

@@ -150,6 +150,19 @@ def render_prompt(contract, references, symbols, applicability, constraints, sta
         "avoid overlaps and label collisions; preserve whitespace and readable connections; respect symbol interface directions.",
         "Logical split/mix/junction objects are connection logic, never standalone physical equipment.",
         "For all known symbols, use the reviewed complete atlas symbols.",
+        ("For Aspen native layout, preserve current-case native icons; any competition example is expression context only."
+         if contract["drawing_use"] == "aspen_native_layout" else
+         "Follow the per-object REVIEWED_SYMBOLS atlas mapping. Where applicable competition legends were selected and attached, "
+         "use them as the first-priority visual source; do not infer competition provenance for unrelated reference images. "
+         "Other source selections follow their reviewed applicability or recorded gap. Competition status does not override "
+         "adopted standards or the project contract. Do not substitute known source legends with generic boxes or guessed shapes."),
+        "For each tower/column, follow its object-specific reviewed legend and drawing rules: preserve the selected complete "
+        "outline and internal representation, distinguish trays from packing, and preserve documented feed, side-draw, "
+        "overhead, bottoms, reflux and reboiler interfaces where those actually exist. Do not infer real tray counts from symbolic "
+        "lines or simulation stages, import a sample control/reflux system, or invent nozzle numbers. Respect documented interface "
+        "levels and endpoint axes; connect without tangent overlap along the tower wall or crossing its body. "
+        "No fixed tower position, side arrangement or surrounding equipment layout is prescribed. Explicit exploration gaps "
+        "remain provisional visual hypotheses and must be corrected before downstream acceptance.",
         "Rectangular equipment symbols are allowed when supported by their reviewed source. No generic shape fallback.",
         ("This first image is candidate_unstandardized. For objects explicitly listed in EXPLORATION_GAPS, explore a plausible visual expression. "
          "Do not default to meaningless functional boxes; do not invent process objects, connections, exact data, source legends or compliance claims. "

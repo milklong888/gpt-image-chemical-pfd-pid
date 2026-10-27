@@ -5,6 +5,8 @@ description: 按来源连接与控制意图规划、绘制或审查P&ID；核测
 
 # PID专项
 
+工程PFD/PID的视觉素材执行[国赛图例优先与塔画法](../chemical-pfd-pid-cad/references/COMPETITION_LEGENDS_AND_TOWERS.md)：适用国赛完整图例第一优先，并实际附给Image；标准效力另核。遇塔必查塔型、内件及本案逐口连接，不能套通用塔形。
+
 生成相关任务统一进入 [Image 分阶段输入合同](../chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md)：先检索，未知图例登记后可探索首图；标准修正经三轮独立审核，再二次生成并实际核改。复杂流程复用功能分块和合格小图总排布，严禁蛇形塞图。只做知识维护时不自动生图。
 
 新绘或补全PID时，先读[流股落图与管道表达](../chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md)：先画来源支持的工艺/公用工程管道网络及管道组合号，再叠加测控。管线清单或控制虚线不能代替实际管道；编号例外须核原条条件，不能漏画。国赛作品参考完整局部与图例，不照搬DN、等级和工程数值。

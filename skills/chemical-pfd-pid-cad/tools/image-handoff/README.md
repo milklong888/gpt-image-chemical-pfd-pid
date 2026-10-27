@@ -2,6 +2,8 @@
 
 本脚本无新增第三方依赖，但会调用既有知识工具；须按知识工具 README 配好原有运行环境。复用同一 `tools` 下的本地 `drawing-knowledge/retrieval_gate.py` 或公开版 `drawing-knowledge/engine/retrieval_gate.py`；缺少同包入口时明确失败，不暗中加载另一套用户私库。不启动 Image、CAD、Aspen，不重建索引，也不新建 RAG。
 
+工程图例按[国赛优先与塔画法](../../references/COMPETITION_LEGENDS_AND_TOWERS.md)选择。用现有 `symbol_atlas/reference_id/atlas_locator` 实际传图，在 Gate1 的符号与图片记录中核选择或回退依据；塔的原件、接口与标准应用逐项检查。准备器不自动认证赛事身份或标准符合。
+
 ## 两个明确阶段
 
 `spec.stage` 必填，只能是 `exploration/standard_revision`；缺省拒绝，不默默落到旧严格模式。`drawing_use` 仍必填 `engineering_pfd/engineering_pid/aspen_native_layout`，不因图例未知改成 BFD。
