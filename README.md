@@ -8,7 +8,7 @@
 
 这是一个面向代理的绘图工作流与工具项目：**5 个总分 Skill、来源知识组织、图面策划提示、可执行检查和对抗验证方法**。ImageGen 是新图布局的核心；工艺数据、元件、控制关系和工程采用来自来源合同。图像不能代替设计依据。
 
-公开版 **0.1.4**，由本地工作流 **4.18** 整理。旧绘图主入口不随包发布；保留有价值、可独立维护的模块。自有代码、工作流和文档按 [MIT](LICENSE) 开源，第三方和未随包资料见 [来源与许可](THIRD_PARTY_NOTICES.md)。GPT-image 服务、模型权重、AutoCAD 和受控标准不是本项目开源的部分。
+公开版 **0.1.6**，由本地工作流 **4.21** 整理。旧绘图主入口不随包发布；保留有价值、可独立维护的模块。自有代码、工作流和文档按 [MIT](LICENSE) 开源，第三方和未随包资料见 [来源与许可](THIRD_PARTY_NOTICES.md)。GPT-image 服务、模型权重、AutoCAD 和受控标准不是本项目开源的部分。
 
 [架构](docs/ARCHITECTURE.md) · [训练与对抗验证](docs/TRAINING_AND_EVALUATION.md) · [验证范围](docs/VALIDATION_STATUS.md) · [安装与运行](docs/INSTALL.md) · [公开范围](docs/OPEN_SOURCE_SCOPE.md)
 
@@ -20,8 +20,10 @@ flowchart TD
   B --> C[语义检索 + 精确标识符 + 设备模块]
   C --> D[对象/流股/控制/标准采用合同]
   D --> R[第一关：内容与依据审核]
-  R --> E[GPT-image 分块生成]
-  E --> Q[第二关：看图反馈与布局审核]
+  R --> E[GPT-image 小块探索]
+  E --> S[标准修正与三轮独立审核]
+  S --> E2[二次生成并核改]
+  E2 --> Q[第二关：合格小图与总排布审核]
   Q --> F[完整图例 + 固定端口 + 受约束接线]
   F --> G[实际 CAD 几何/文字/数据检查]
   G --> H[保存重开 + 原生 PDF + 局部目视]
@@ -38,6 +40,8 @@ flowchart TD
 ```
 
 Aspen只需要PFD排布时，可用[Image布局前段](skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md)：完成检索、内容审核、Image生成与看图反馈后返回图块及跨块接口，不进入CAD重建。Aspen实施及其文件验收仍由调用方负责，公开包不包含通用Aspen坐标实施器。
+
+生成使用 [分阶段输入合同](skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md) 与 [请求准备器](skills/chemical-pfd-pid-cad/tools/image-handoff/README.md)：先理解与检索，未知图例允许探索首图；按标准修正并三轮独立审核后，二次生成再看再改。复杂流程复用小块生成、合格小图总排布，严禁蛇形塞满单框。当前阶段修订按用户要求未测试，旧入口的测试不继承。
 
 ## 各部分做什么
 

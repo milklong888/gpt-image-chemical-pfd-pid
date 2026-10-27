@@ -2,10 +2,12 @@
 name: chemical-pfd-pid-cad
 description: 绘制、修复或审查化工PFD、PID与设备条件图；先检索标准、案例与完整原图例，再以GPT-image布局、真实端口接线和实际CAD回读交付。不是工艺或制造设计计算器。
 metadata:
-  workflow-version: "4.19-public-0.1.5"
+  workflow-version: "4.21-public-0.1.6"
 ---
 
 # 化工绘图总控
+
+新图、整体重排及 Aspen 前段调用先执行 [Image 分阶段输入合同](references/IMAGE_INPUT_CONTRACT.md)：理解流程后按需功能分块，已知图例完整采用，未知模块登记后由 Image 探索；按标准修正并三轮独立审核后，二次生成再核改。合格小块再交 Image 做总排布，严禁为塞满单框而蛇形密排。使用 `tools/image-handoff/prepare_image_request.py` 区分探索与标准修订请求；图后通过前不能进入 CAD 或交付。
 
 ## 最高准则：文献压力基准
 

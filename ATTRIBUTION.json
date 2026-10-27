@@ -267,6 +267,22 @@
     {
       "path": "skills/chemical-pfd-pid-cad/tools/typography/test_native_text_envelopes.py",
       "sidecar": "skills/chemical-pfd-pid-cad/tools/typography/test_native_text_envelopes.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/README.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/README.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/example.synthetic.json",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/example.synthetic.json.license"
     }
   ],
   "policy_files": [

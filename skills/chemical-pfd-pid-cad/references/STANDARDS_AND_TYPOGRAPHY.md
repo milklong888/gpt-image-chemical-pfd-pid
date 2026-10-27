@@ -1,5 +1,7 @@
 # 何时查标准，何时检查字体
 
+行业标准发现必须前置：先以行业/服务和图种查询是否存在专用符号或代号标准，再按适用范围组合通用制图要求。例如空气分离设备应查 [GB/T 36489-2018 官方目录](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=D2821D37AF7E1E3A8E2EBD9807187913) 及受控正文，而不是只检索通用塔/换热器素材。2026-10-27仅在此核实该目录身份和现行状态；具体条/表/图的项目采用须另行读原文、绑定对象和检查动作。该例不是其他行业默认标准。生成前将结果按 [Image 输入合同](IMAGE_INPUT_CONTRACT.md) 绑定实际请求。
+
 按图种×设备服务×当前动作×阶段检索。管口/旋转查physical_connection，交叉/分支查junction_crossing，跨页查continuation，测量/控制查signal_endpoint，组合块查common_block，位号/表查identification和stream_information，字体/尺寸/出图查typography、dimension和plot_readability。标签是导航，不是已经查过的证明。
 
 四个时点：策划及ImageGen前读来源和适用标准；画某类对象/接线前冻结所选表达；局部改动后验受影响实际实体；保存重开交付前查全图/表/接口/打印及未决条款。没有相关改动无需全库重查。
