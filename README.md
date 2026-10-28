@@ -8,7 +8,7 @@
 
 这是一个面向代理的绘图工作流与工具项目：**5 个总分 Skill、来源知识组织、图面策划提示、可执行检查和对抗验证方法**。ImageGen 是新图布局的核心；工艺数据、元件、控制关系和工程采用来自来源合同。图像不能代替设计依据。
 
-公开版 **0.1.7**，由本地工作流 **4.22** 整理。旧绘图主入口不随包发布；保留有价值、可独立维护的模块。自有代码、工作流和文档按 [MIT](LICENSE) 开源，第三方和未随包资料见 [来源与许可](THIRD_PARTY_NOTICES.md)。GPT-image 服务、模型权重、AutoCAD 和受控标准不是本项目开源的部分。
+公开版 **0.1.8**，由本地工作流 **4.23** 整理。旧绘图主入口不随包发布；保留有价值、可独立维护的模块。自有代码、工作流和文档按 [MIT](LICENSE) 开源，第三方和未随包资料见 [来源与许可](THIRD_PARTY_NOTICES.md)。GPT-image 服务、模型权重、AutoCAD 和受控标准不是本项目开源的部分。
 
 [架构](docs/ARCHITECTURE.md) · [训练与对抗验证](docs/TRAINING_AND_EVALUATION.md) · [验证范围](docs/VALIDATION_STATUS.md) · [安装与运行](docs/INSTALL.md) · [公开范围](docs/OPEN_SOURCE_SCOPE.md)
 
@@ -16,35 +16,32 @@
 
 ```mermaid
 flowchart TD
-  A[任务与资料] --> B[登记/切片/来源核验]
-  B --> C[语义检索 + 精确标识符 + 设备模块]
-  C --> D[对象/流股/控制/标准采用合同]
-  D --> R[第一关：内容与依据审核]
-  R --> E[GPT-image 小块探索]
-  E --> S[标准修正与三轮独立审核]
-  S --> E2[二次生成并核改]
-  E2 --> Q[第二关：小图实际看图核改]
-  Q --> F[小图CAD：图例/端口/准确旗标及数据]
-  F --> G[小图数据/几何/字体与原生核验]
-  G --> O[合格小图交Image做总排布]
-  O --> J[真实拼接与信息关联复核]
-  J --> H[标准/语义/数据/几何及原生出图检查]
-  H --> V[第三关：最终文件与交付说明审核]
-  V --> I[交付与证据]
-  R -->|内容未通过| C
-  Q -->|布局未通过| E
-  Q -->|合同错误| D
-  O -->|需调整分块或布局合同| D
-  V -->|实际文件未通过| F
-  C -->|库内残缺| B
-  G -->|失败| D
-  H -->|失败| E
-  I -.闭环后有证据的通用改进.-> C
+  A[任务范围：按需划分车间] --> B[检索应画要素/标准/国赛整图及完整图例]
+  B --> C[冻结对象/端口/数据与显示集合]
+  C --> R[第一关：内容及实际Image输入审核]
+  R --> E[正常流程首图：确需时车间内分块]
+  E --> Q[第二关：看图反馈与标准修正]
+  Q --> F[首版准确CAD：原图例/接线/参数旗/字体]
+  F --> G[国赛风格比对与实际几何/数据检查]
+  G --> J[若有分块：真实CAD合并及跨块对账]
+  J --> S[同版CAD及优化输入三轮独立审核]
+  S --> E2[二次Image：仅位置/排线/留白]
+  E2 --> K[看图后用冻结原图元及数据重画CAD]
+  K --> H[原生保存重开/数据与文字回读/PDF目视]
+  H --> V[第三关：同版清单与最终验收]
+  V --> I[交付与当前证据]
+  R -->|依据有误| B
+  Q -->|布局有误| E
+  S -->|实际CAD有误| F
+  V -->|硬错或错版| K
+  B -->|库内残缺| A
 ```
 
 Aspen只需要PFD排布时，可用[Image布局前段](skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md)：完成检索、内容审核、Image生成与看图反馈后返回图块及跨块接口，不进入CAD重建。Aspen实施及其文件验收仍由调用方负责，公开包不包含通用Aspen坐标实施器。
 
-生成使用 [分阶段输入合同](skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md) 与 [请求准备器](skills/chemical-pfd-pid-cad/tools/image-handoff/README.md)：先理解与检索，未知图例允许探索首图；按标准修正并三轮独立审核后，二次生成再看再改。复杂流程复用小块生成、合格小图总排布，严禁蛇形塞满单框。字体不作为Image门槛；实际落字前必须看同用途案例并核源样式，标签放置用自然语言说明，准确内容由CAD/Aspen写入。当前阶段修订按用户要求未测试，旧入口的测试不继承。
+生成使用[分阶段输入合同](skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md)和[请求准备器](skills/chemical-pfd-pid-cad/tools/image-handoff/README.md)。先检索与实际附参考图，正常范围首图优先；标准修正后先准确CAD、国赛风格/图例比对及必要合并，三轮审核后才二次Image仅优化排线布局，再用冻结资料重画CAD。禁止蛇形塞框。Image不要求准确字体；实际CAD/Aspen须核来源字体、字形和入框。
+
+本次按实际案例总结补充[排线与同版交付](skills/chemical-pfd-pid-cad/references/ROUTING_AND_DELIVERY.md)：必经点传入路由并独立核顺序，参数旗/表/说明使用同一显示集合，[交付清单工具](skills/chemical-pfd-pid-cad/tools/delivery/README.md)核字段、输出身份、导出状态及审核绑定。案例数据、原图、字体和专案脚本不随包搬运。验证范围见对应版本记录，不把离线检查当成新图已验收。
 
 ## 各部分做什么
 
@@ -57,7 +54,7 @@ Aspen只需要PFD排布时，可用[Image布局前段](skills/chemical-pfd-pid-c
 |知识 Skill|来源登记、切片、向量/关键词/图谱、模块挂接和溯源补库|
 |检查工具|检查明确合同与实际数据；不靠模型自评决定通过|
 
-可运行源码：[知识引擎](skills/chemical-pfd-pid-cad/tools/drawing-knowledge/README.md)、[几何/路由/连续桥/箭头顺序](skills/chemical-pfd-pid-cad/tools/geometry/README.md)、[尺寸审计](skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py)。几何组件的 58 项合成测试包含实际 libavoid 路由；原生读取源码另有编译与执行边界。
+可运行源码：[知识引擎](skills/chemical-pfd-pid-cad/tools/drawing-knowledge/README.md)、[几何/路由/连续桥/箭头顺序](skills/chemical-pfd-pid-cad/tools/geometry/README.md)、[尺寸审计](skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py)。本版几何/路由 95 项、交付一致性 21 项离线检查通过；包括实际 libavoid，但未执行 AutoCAD。当前与历史证据分别记录在[验证范围](docs/VALIDATION_STATUS.md)。
 
 知识组织复用 **LlamaIndex、Docling、LinkML、BGE**，而不是另造检索框架。思想组织参考同作者的 [化工设计专家工作库](https://github.com/milklong888/chemical-engineering-skills)：先冻结范围和依据，再实现，再检验；任务经验经过审阅后才进入共享规则。
 

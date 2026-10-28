@@ -1,0 +1,78 @@
+{
+  "version": "0.1.8",
+  "workflow": "4.23",
+  "date": "2026-10-28",
+  "scope": "Bounded local source/consistency/geometry verification. No Image, Aspen or AutoCAD execution; no engineering release.",
+  "geometry": {
+    "passed": true,
+    "tests_discovered": 95,
+    "skipped": 0,
+    "python": "3.14.7",
+    "dependencies": {
+      "shapely": "2.1.2",
+      "ezdxf": "1.4.3"
+    },
+    "real_optional_libavoid_invoked": true,
+    "runtime_adapter_sha256": "5eef083ee9fd286badb33ad5630cd2e5b9ed3bdacec1a533c4e68ea49af99a42",
+    "candidate_adapter_sha256": "5eef083ee9fd286badb33ad5630cd2e5b9ed3bdacec1a533c4e68ea49af99a42",
+    "cad_executed": false,
+    "model_or_semantic_query_executed": false,
+    "network_installer_executed": false,
+    "fresh_dependency_install_tested": false
+  },
+  "delivery_consistency": {
+    "tests_discovered": 21,
+    "passed": true,
+    "skipped": 0,
+    "evidence": "Actual local unittest output during integration; includes hardlink alias, import no-write and CLI nonzero-return cases."
+  },
+  "public_package": {
+    "tests_discovered": 4,
+    "passed": true
+  },
+  "image_prompt": {
+    "syntax_checked": true,
+    "full_v2_gate_or_real_generation_tested": false
+  },
+  "retained_failure": {
+    "stage": "initial geometry integration",
+    "tests_discovered": 90,
+    "errors": 1,
+    "target": "test_real_middle_checkpoint",
+    "rejection": "self_intersection",
+    "effect": "Candidate not committed; fixed before publication."
+  },
+  "actual_drawings_modified": false,
+  "private_case_materials_published": false,
+  "remote_ci": "not yet checked for this commit",
+  "files": [
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_guard.py",
+      "sha256": "4fbac895a73f4cf6b5f9b5a932d2e07643bd4964ef894631777127cc2da97f34"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_router.py",
+      "sha256": "bd25af4841043237c5654dc719184fe39c97f3b8323795c9bfcef29c37c01bf6"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_runtime/route.mjs",
+      "sha256": "5eef083ee9fd286badb33ad5630cd2e5b9ed3bdacec1a533c4e68ea49af99a42"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_checkpoints.py",
+      "sha256": "4391a7545c37060d56833fe1dcc34ed021d43a0d6303df49d04063e4d85735ad"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/delivery_manifest.py",
+      "sha256": "5b118f622596878df49e310de3bec150cd376d2e67e0d535005504998c75c8d8"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/tests/test_delivery_manifest.py",
+      "sha256": "4d6d292ad615a3c0fff5322d8fd00adfad303c38b7eb04894780eb51c6bed123"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py",
+      "sha256": "63e89a8b92d0612984a57fa43cf6036a22c2e473529a2c50dd25817380b7b8e0"
+    }
+  ]
+}

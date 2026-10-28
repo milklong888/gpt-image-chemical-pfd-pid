@@ -2,7 +2,7 @@
 name: chemical-pfd-pid-cad
 description: 绘制、修复或审查化工PFD、PID与设备条件图；先检索标准、案例与完整原图例，再以GPT-image布局、真实端口接线和实际CAD回读交付。不是工艺或制造设计计算器。
 metadata:
-  workflow-version: "4.22-public-0.1.7"
+  workflow-version: "4.23-public-0.1.8"
 ---
 
 # 化工绘图总控
@@ -12,6 +12,8 @@ metadata:
 字体与标签按[看案例再落字](references/IMAGE_INPUT_CONTRACT.md#字体与标签先实际看案例再写明怎么画)执行：实际打开同用途原图局部，用自然语言说明旗形/字段排列/引线归属；Image不要求字体，真实CAD/Aspen写入时核来源字体、字高宽度对齐和原生字形入框。仅摘要或样式名不算核实。
 
 工程PFD/PID的视觉素材执行[国赛图例优先与塔画法](references/COMPETITION_LEGENDS_AND_TOWERS.md)：适用国赛完整图例第一优先，并实际附给Image；标准效力另核。遇塔必查塔型、内件及本案逐口连接，不能套通用塔形。
+
+排线、标注或交付修订还须读[排线与同版交付](references/ROUTING_AND_DELIVERY.md)：使用同一来源/显示清单，接管与必经点逐段检查，标注参与布局，最终文件和审核精确绑定；具体支持边界不能由提示词或计数代替。
 
 ## 最高准则：文献压力基准
 

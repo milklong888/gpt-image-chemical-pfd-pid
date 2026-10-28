@@ -45,6 +45,10 @@
       "sidecar": "skills/chemical-pfd-pid-cad/references/GEOMETRY_AND_NATIVE.md.license"
     },
     {
+      "path": "skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md.license"
+    },
+    {
       "path": "skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md",
       "sidecar": "skills/chemical-pfd-pid-cad/references/IMAGE_LAYOUT_HANDOFF.md.license"
     },
@@ -61,6 +65,10 @@
       "sidecar": "skills/chemical-pfd-pid-cad/references/PLANNING_AND_RETRIEVAL.md.license"
     },
     {
+      "path": "skills/chemical-pfd-pid-cad/references/ROUTING_AND_DELIVERY.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/references/ROUTING_AND_DELIVERY.md.license"
+    },
+    {
       "path": "skills/chemical-pfd-pid-cad/references/SOURCE_COMPLETION.md",
       "sidecar": "skills/chemical-pfd-pid-cad/references/SOURCE_COMPLETION.md.license"
     },
@@ -71,6 +79,26 @@
     {
       "path": "skills/chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md",
       "sidecar": "skills/chemical-pfd-pid-cad/references/STREAM_AND_PIPE_ANNOTATION.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/README.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/delivery/README.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/delivery_manifest.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/delivery/delivery_manifest.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/example.prepare.json",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/delivery/example.prepare.json.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/example.source-data.json",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/delivery/example.source-data.json.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/delivery/tests/test_delivery_manifest.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/delivery/tests/test_delivery_manifest.py.license"
     },
     {
       "path": "skills/chemical-pfd-pid-cad/tools/dimensions/dimension_audit.py",
@@ -233,6 +261,14 @@
       "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/python/pfd_source_geometry.py.license"
     },
     {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_checkpoint_frame.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_checkpoint_frame.py.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_checkpoints.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_checkpoints.py.license"
+    },
+    {
       "path": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_native_offline.py",
       "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_native_offline.py.license"
     },
@@ -253,8 +289,16 @@
       "sidecar": "skills/chemical-pfd-pid-cad/tools/geometry/tests/test_source_geometry.py.license"
     },
     {
-      "path": "skills/chemical-pid-drawing/SKILL.md",
-      "sidecar": "skills/chemical-pid-drawing/SKILL.md.license"
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/README.md",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/README.md.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/example.synthetic.json",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/example.synthetic.json.license"
+    },
+    {
+      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py",
+      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py.license"
     },
     {
       "path": "skills/chemical-pfd-pid-cad/tools/typography/README.md",
@@ -269,20 +313,8 @@
       "sidecar": "skills/chemical-pfd-pid-cad/tools/typography/test_native_text_envelopes.py.license"
     },
     {
-      "path": "skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md",
-      "sidecar": "skills/chemical-pfd-pid-cad/references/IMAGE_INPUT_CONTRACT.md.license"
-    },
-    {
-      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py",
-      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/prepare_image_request.py.license"
-    },
-    {
-      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/README.md",
-      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/README.md.license"
-    },
-    {
-      "path": "skills/chemical-pfd-pid-cad/tools/image-handoff/example.synthetic.json",
-      "sidecar": "skills/chemical-pfd-pid-cad/tools/image-handoff/example.synthetic.json.license"
+      "path": "skills/chemical-pid-drawing/SKILL.md",
+      "sidecar": "skills/chemical-pid-drawing/SKILL.md.license"
     }
   ],
   "policy_files": [

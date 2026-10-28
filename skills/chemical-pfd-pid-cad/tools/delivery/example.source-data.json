@@ -1,0 +1,11 @@
+{
+  "schema": "delivery-source/v1",
+  "streams": [
+    {
+      "id": "REPLACE_WITH_SOURCE_STREAM_ID",
+      "fields": {"T": "REPLACE_WITH_LITERAL_ADOPTED_VALUE"},
+      "units": {"T": "REPLACE_WITH_ADOPTED_UNIT"},
+      "source_ref": "REPLACE_WITH_SAME_CASE_FILE_IDENTITY_AND_TABLE_LOCATION"
+    }
+  ]
+}

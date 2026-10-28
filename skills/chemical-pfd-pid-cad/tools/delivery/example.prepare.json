@@ -1,0 +1,8 @@
+{
+  "schema": "delivery-prepare/v1",
+  "source_data": {
+    "path": "your-complete-source-data.json",
+    "sha256": "REPLACE_WITH_ACTUAL_64_LOWERCASE_HEX_SHA256"
+  },
+  "exclusions": []
+}

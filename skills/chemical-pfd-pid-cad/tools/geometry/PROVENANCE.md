@@ -6,7 +6,7 @@ The maintainer audit read that commit's tree and all 31 Python source blobs in m
 
 There is separate local development evidence: the PFD-v2 installation record installs `pfd_guard.py` and its synthetic tests separately from `pfd_guard_legacy.py` and the `chemcad_*` adapters. Its frozen validation report identifies 34 independent Shapely cases separately from 27 legacy adapter cases. The retained `test_pfd_guard.py` still has SHA256 `3c8cdedb091157297514e26aec46011836b4ec6a856dbc09e1ff70063a7cd560`, identical to that new-module test record. The installation also records the independent router, native source-geometry helper and Node wrapper separately from the old generator. The later dependency audit confirms that the current copied router has no legacy-import closure.
 
-The following files are retained independent project modules, with original headers and implementation unchanged:
+The following files were initially retained as independent project modules. The 0.1.8 maintenance adds ordered-checkpoint validation, fixed-lead handling, rigid candidate normalization and bounded checkpoint direction generation to the independent guard/router/JS wrapper; the prior audit below records the initial provenance, not an assertion that these implementations remain byte-identical:
 
 - `python/pfd_guard.py`: explicit geometry contract and atomic validation.
 - `python/pfd_router.py`: independent bounded libavoid candidate adapter and simplification checks; no old `route_pipes` adapter.

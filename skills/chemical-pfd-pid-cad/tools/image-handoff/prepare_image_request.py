@@ -152,7 +152,21 @@ def render_prompt(contract, references, symbols, applicability, constraints, wor
         "This forbids packing geometry, not genuine process recycles: preserve all real directed recycle connections in the semantic contract.",
         "Apply only the separately reviewed local spatial constraints below. Geometry constraints remain active:",
         "avoid overlaps and label collisions; preserve whitespace and readable connections; respect symbol interface directions.",
-        "Logical split/mix/junction objects are connection logic, never standalone physical equipment.",
+        "For known ports, leave the source along its outward axis and arrive against the target outward axis; "
+        "reserve straight nozzle leads. Do not run tangent along an equipment wall, through a body, or along another unrelated line. "
+        "Process nozzle leads have the same effective stroke width as their process line; preserve source symbol internals.",
+        "Logical split/mix/junction objects are connection logic, never standalone physical equipment. "
+        "Show a true tee or selected source junction only where the directed connection contract declares it; "
+        "a coordinate crossing is never evidence of a connection.",
+        ("For Aspen native layout, retain the caller's native connection/crossing expression without redesigning icons."
+         if contract["drawing_use"] == "aspen_native_layout" else
+         "First reduce crossings by placement and routing. For necessary nonconnecting crossings, use this project's "
+         "continuous arched bridge convention: keep both routes continuous, preserve ownership, and never replace the "
+         "crossing with a gap or a false junction. Exact arc geometry and clearance are checked in CAD, not certified by this image."),
+        "Reserve complete annotation space for every contracted stream flag, field group, leader, instrument and arrow. "
+        "Keep labels visibly associated with their own routes; do not route through flags or text, or cover text with arrows. "
+        "If no readable placement exists, revise spacing or sectioning rather than shrinking required text. "
+        "Suggest only layout corridors; accurate fields, units, fonts, endpoint geometry and approved route checkpoints come from the CAD contract.",
         "For all known symbols, use the reviewed complete atlas symbols.",
         ("For CAD layout refinement, the reviewed original CAD symbols and text are frozen. All competition references are style context only; preserve symbol definitions and engineering identities while allowing reviewed placement and route changes."
          if stage == "cad_layout_refinement" else

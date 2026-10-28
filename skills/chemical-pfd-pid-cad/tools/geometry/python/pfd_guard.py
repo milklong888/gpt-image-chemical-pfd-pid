@@ -61,6 +61,40 @@ def _array(value, name, **ctx):
     return value
 
 
+def validate_checkpoints(pipe, tol):
+    """Validate optional ordered via-points; never snap, sort or deduplicate.
+
+    This only validates the declaration. _one independently checks the actual
+    path, including candidates supplied without going through the router.
+    """
+    _mapping(pipe, 'pipe')
+    if 'checkpoints' not in pipe:
+        return []
+    pid = _id(pipe.get('id'), 'pipe.id')
+    try:
+        points = [_point(raw, 'pipe.checkpoints', pipe=pid)
+                  for raw in _array(pipe['checkpoints'], 'pipe.checkpoints', pipe=pid)]
+    except OverflowError:
+        _fail('invalid_number', 'pipe.checkpoints coordinates must be finite representable numbers', pipe=pid)
+    for i, point in enumerate(points):
+        if any(math.dist(point, old) <= tol for old in points[:i]):
+            _fail('duplicate_checkpoint', 'checkpoints must be distinct beyond linear_tolerance', pipe=pid)
+    return [list(point) for point in points]
+
+
+def _check_checkpoint_path(line, checkpoints, tol, pid):
+    """Verify geometric hits in declared traversal order, including segment interiors."""
+    previous = None
+    for index, point in enumerate(checkpoints):
+        mark = Point(point)
+        if line.distance(mark) > tol:
+            _fail('checkpoint_missing', f'route misses checkpoint {index}', pipe=pid)
+        progress = line.project(mark)
+        if previous is not None and progress <= previous + tol:
+            _fail('checkpoint_order', f'route does not visit checkpoint {index} after its predecessor', pipe=pid)
+        previous = progress
+
+
 def _unexpected_contact(intersection, allowed, tol):
     """Only numerical point neighborhoods are allowed, never an owner body."""
     # GEOS may retain an almost-zero segment after difference at large world
@@ -207,6 +241,7 @@ def _one(pipe, context):
     tol = p['linear_tolerance']
     _mapping(pipe, 'pipe')
     pid = _id(pipe.get('id'), 'pipe.id')
+    checkpoints = validate_checkpoints(pipe, tol)
     source = _endpoint(pipe.get('source'), ports, pid, 'source')
     target = _endpoint(pipe.get('target'), ports, pid, 'target')
     if source[:2] == target[:2]:
@@ -231,6 +266,7 @@ def _one(pipe, context):
     line = LineString(points)
     if not line.is_simple:
         _fail('self_intersection', 'pipe self-intersects or repeats a segment', pipe=pid)
+    _check_checkpoint_path(line, checkpoints, tol, pid)
     runs, exemptions = [], []
     for which, endpoint, path in (('source', source, points), ('target', target, points[::-1])):
         eid, _, port = endpoint
